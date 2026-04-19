@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: process-master-portal
+  main:
+    allow-circular-references: true # 关闭循环引用校验
+  config:
+    center:
+      enabled: true # 会在 com.shinemo.common.tools.config.SpringPropertySource 中去拿配置中心的配置
+  servlet:
+    multipart:
+      max-file-size: 8MB
+      max-request-size: 16MB
+  mvc:
+    date-format: "yyyy-MM-dd HH:mm:ss"
+    dispatch-trace-request: true
+  jackson:
+    default-property-inclusion: NON_NULL # https://www.cnblogs.com/woshimrf/p/LocalDate-serialize-json-springboot.html
+    serialization.WRITE_DATES_AS_TIMESTAMPS: false
+  redis:
+    enabled: false
+    confKey: main # 会在 com.shinemo.common.tools.config.RemotePropertySource 中替换成Spring 的配置
+    timeout: 10000 # Connection timeout in milliseconds.
+    jedis.pool:
+      testOnBorrow: true
+      max-active: 100 # Max number of connections that can be allocated by the pool at a given time. Use a negative value for no limit.
+      max-idle: 20 # Max number of "idle" connections in the pool. Use a negative value to indicate an unlimited number of idle connections.
+      max-wait: 10000 # Maximum amount of time (in milliseconds) a connection allocation should block before throwing an exception when the pool is exhausted. Use a negative value to block indefinitely.
+    lettuce.pool:
+      testOnBorrow: true
+      max-active: 100 # Max number of connections that can be allocated by the pool at a given time. Use a negative value for no limit.
+      max-idle: 20 # Max number of "idle" connections in the pool. Use a negative value to indicate an unlimited number of idle connections.
+      max-wait: 10000 # Maximum amount of time ( milliseconds) a connection allocation should block before throwing an exception when the pool is exhausted. Use a negative value to block indefinitely.
+
+server:
+  port: 8890
+  tomcat:
+    max-threads: 200 # Maximum amount of worker threads.
+    min-spare-threads: 10 # Minimum amount of worker threads.
+
+app:
+  home: ${user.dir} # 脚本里面会用到
+  name: ${spring.application.name} # 脚本里面会用到
+  version: 1.0.0  # 脚本里面会用到
+
+
+logging:
+  config: classpath:log4j2-${spring.profiles.active:dev}.xml
+
+
+log:
+  desensitization:
+    pattern:
+      list: w[-w.+]*@([A-Za-z0-9][-A-Za-z0-9]+.)+[A-Za-z]{2,14}==(?<=(token|Token|TOKEN)).*?(?=(,|;))==(?<!d)[0-9]+(.[0-9]+),[0-9]+(.[0-9]+)==(?<!d)(1d{10})(?!d)==(?<!d)(d{6})([19,20]d{7})(d{3}[0-9Xx])(?!d)
+
+dubbo:
+  application:
+    name: process-master-portal
+  registry:
+    address: zookeeper://127.0.0.1:2181
+  monitor:
+    protocol: registry

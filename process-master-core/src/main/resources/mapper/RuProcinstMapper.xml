@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lg.engine.core.db.mapper.RuProcinstMapper">
+  <resultMap id="BaseResultMap" type="org.lg.engine.core.db.model.RuProcinst">
+    <!--@mbg.generated-->
+    <!--@Table t_wf_ru_procinst-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
+    <result column="proc_name" jdbcType="VARCHAR" property="procName" />
+    <result column="proc_key" jdbcType="VARCHAR" property="procKey" />
+    <result column="proc_de_key" jdbcType="VARCHAR" property="procDeKey" />
+    <result column="proc_re_id" jdbcType="BIGINT" property="procReId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="starter_id" jdbcType="VARCHAR" property="starterId" />
+    <result column="starter_org_id" jdbcType="VARCHAR" property="starterOrgId" />
+    <result column="starter_name" jdbcType="VARCHAR" property="starterName" />
+    <result column="starter_org_name" jdbcType="VARCHAR" property="starterOrgName" />
+    <result column="starter_dept_id" jdbcType="VARCHAR" property="starterDeptId" />
+    <result column="starter_dept_name" jdbcType="VARCHAR" property="starterDeptName" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+    <result column="tenant" jdbcType="VARCHAR" property="tenant" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="proc_form_data_key" jdbcType="VARCHAR" property="procFormDataKey" />
+    <result column="proc_form_key" jdbcType="VARCHAR" property="procFormKey" />
+    <result column="proc_form_url" jdbcType="VARCHAR" property="procFormUrl" />
+    <result column="biz_id" jdbcType="VARCHAR" property="bizId" />
+    <result column="app_key" jdbcType="VARCHAR" property="appKey" />
+    <result column="var_json" jdbcType="LONGVARCHAR" property="varJson" />
+    <result column="proc_form_url_app" jdbcType="VARCHAR" property="procFormUrlApp" />
+    <result column="proc_form_start_url_app" jdbcType="VARCHAR" property="procFormStartUrlApp" />
+    <result column="task_title" jdbcType="LONGVARCHAR" property="taskTitle" />
+    <result column="task_type" jdbcType="LONGVARCHAR" property="taskType" />
+    <result column="proc_view_json" jdbcType="LONGVARCHAR" property="procViewJson" />
+    <result column="proc_json" jdbcType="LONGVARCHAR" property="procJson" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modified, proc_name, proc_key, proc_de_key, proc_re_id, `status`, 
+    starter_id, starter_org_id, starter_name, starter_org_name, starter_dept_id, starter_dept_name, 
+    flags, tenant, pid, proc_form_data_key, proc_form_key, proc_form_url, biz_id, app_key, 
+    var_json, proc_form_url_app, proc_form_start_url_app, task_title, task_type, proc_view_json, 
+    proc_json
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_wf_ru_procinst
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_wf_ru_procinst
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.RuProcinst" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_procinst (gmt_create, gmt_modified, proc_name, 
+      proc_key, proc_de_key, proc_re_id, 
+      `status`, starter_id, starter_org_id, 
+      starter_name, starter_org_name, starter_dept_id, 
+      starter_dept_name, flags, tenant, 
+      pid, proc_form_data_key, proc_form_key, 
+      proc_form_url, biz_id, app_key, 
+      var_json, proc_form_url_app, proc_form_start_url_app, 
+      task_title, task_type, proc_view_json, 
+      proc_json)
+    values (#{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}, #{procName,jdbcType=VARCHAR}, 
+      #{procKey,jdbcType=VARCHAR}, #{procDeKey,jdbcType=VARCHAR}, #{procReId,jdbcType=BIGINT}, 
+      #{status,jdbcType=INTEGER}, #{starterId,jdbcType=VARCHAR}, #{starterOrgId,jdbcType=VARCHAR}, 
+      #{starterName,jdbcType=VARCHAR}, #{starterOrgName,jdbcType=VARCHAR}, #{starterDeptId,jdbcType=VARCHAR}, 
+      #{starterDeptName,jdbcType=VARCHAR}, #{flags,jdbcType=INTEGER}, #{tenant,jdbcType=VARCHAR}, 
+      #{pid,jdbcType=BIGINT}, #{procFormDataKey,jdbcType=VARCHAR}, #{procFormKey,jdbcType=VARCHAR}, 
+      #{procFormUrl,jdbcType=VARCHAR}, #{bizId,jdbcType=VARCHAR}, #{appKey,jdbcType=VARCHAR}, 
+      #{varJson,jdbcType=LONGVARCHAR}, #{procFormUrlApp,jdbcType=VARCHAR}, #{procFormStartUrlApp,jdbcType=VARCHAR}, 
+      #{taskTitle,jdbcType=LONGVARCHAR}, #{taskType,jdbcType=LONGVARCHAR}, #{procViewJson,jdbcType=LONGVARCHAR}, 
+      #{procJson,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.RuProcinst" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_procinst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="procName != null">
+        proc_name,
+      </if>
+      <if test="procKey != null">
+        proc_key,
+      </if>
+      <if test="procDeKey != null">
+        proc_de_key,
+      </if>
+      <if test="procReId != null">
+        proc_re_id,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="starterId != null">
+        starter_id,
+      </if>
+      <if test="starterOrgId != null">
+        starter_org_id,
+      </if>
+      <if test="starterName != null">
+        starter_name,
+      </if>
+      <if test="starterOrgName != null">
+        starter_org_name,
+      </if>
+      <if test="starterDeptId != null">
+        starter_dept_id,
+      </if>
+      <if test="starterDeptName != null">
+        starter_dept_name,
+      </if>
+      <if test="flags != null">
+        flags,
+      </if>
+      <if test="tenant != null">
+        tenant,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="procFormDataKey != null">
+        proc_form_data_key,
+      </if>
+      <if test="procFormKey != null">
+        proc_form_key,
+      </if>
+      <if test="procFormUrl != null">
+        proc_form_url,
+      </if>
+      <if test="bizId != null">
+        biz_id,
+      </if>
+      <if test="appKey != null">
+        app_key,
+      </if>
+      <if test="varJson != null">
+        var_json,
+      </if>
+      <if test="procFormUrlApp != null">
+        proc_form_url_app,
+      </if>
+      <if test="procFormStartUrlApp != null">
+        proc_form_start_url_app,
+      </if>
+      <if test="taskTitle != null">
+        task_title,
+      </if>
+      <if test="taskType != null">
+        task_type,
+      </if>
+      <if test="procViewJson != null">
+        proc_view_json,
+      </if>
+      <if test="procJson != null">
+        proc_json,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="procName != null">
+        #{procName,jdbcType=VARCHAR},
+      </if>
+      <if test="procKey != null">
+        #{procKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procDeKey != null">
+        #{procDeKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procReId != null">
+        #{procReId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="starterId != null">
+        #{starterId,jdbcType=VARCHAR},
+      </if>
+      <if test="starterOrgId != null">
+        #{starterOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="starterName != null">
+        #{starterName,jdbcType=VARCHAR},
+      </if>
+      <if test="starterOrgName != null">
+        #{starterOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="starterDeptId != null">
+        #{starterDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="starterDeptName != null">
+        #{starterDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="flags != null">
+        #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="tenant != null">
+        #{tenant,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="procFormDataKey != null">
+        #{procFormDataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procFormKey != null">
+        #{procFormKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procFormUrl != null">
+        #{procFormUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bizId != null">
+        #{bizId,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null">
+        #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="varJson != null">
+        #{varJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procFormUrlApp != null">
+        #{procFormUrlApp,jdbcType=VARCHAR},
+      </if>
+      <if test="procFormStartUrlApp != null">
+        #{procFormStartUrlApp,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTitle != null">
+        #{taskTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="taskType != null">
+        #{taskType,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procViewJson != null">
+        #{procViewJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procJson != null">
+        #{procJson,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lg.engine.core.db.model.RuProcinst">
+    <!--@mbg.generated-->
+    update t_wf_ru_procinst
+    <set>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="procName != null">
+        proc_name = #{procName,jdbcType=VARCHAR},
+      </if>
+      <if test="procKey != null">
+        proc_key = #{procKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procDeKey != null">
+        proc_de_key = #{procDeKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procReId != null">
+        proc_re_id = #{procReId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="starterId != null">
+        starter_id = #{starterId,jdbcType=VARCHAR},
+      </if>
+      <if test="starterOrgId != null">
+        starter_org_id = #{starterOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="starterName != null">
+        starter_name = #{starterName,jdbcType=VARCHAR},
+      </if>
+      <if test="starterOrgName != null">
+        starter_org_name = #{starterOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="starterDeptId != null">
+        starter_dept_id = #{starterDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="starterDeptName != null">
+        starter_dept_name = #{starterDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="flags != null">
+        flags = #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="tenant != null">
+        tenant = #{tenant,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="procFormDataKey != null">
+        proc_form_data_key = #{procFormDataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procFormKey != null">
+        proc_form_key = #{procFormKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procFormUrl != null">
+        proc_form_url = #{procFormUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bizId != null">
+        biz_id = #{bizId,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null">
+        app_key = #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="varJson != null">
+        var_json = #{varJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procFormUrlApp != null">
+        proc_form_url_app = #{procFormUrlApp,jdbcType=VARCHAR},
+      </if>
+      <if test="procFormStartUrlApp != null">
+        proc_form_start_url_app = #{procFormStartUrlApp,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTitle != null">
+        task_title = #{taskTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="taskType != null">
+        task_type = #{taskType,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procViewJson != null">
+        proc_view_json = #{procViewJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procJson != null">
+        proc_json = #{procJson,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lg.engine.core.db.model.RuProcinst">
+    <!--@mbg.generated-->
+    update t_wf_ru_procinst
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      proc_name = #{procName,jdbcType=VARCHAR},
+      proc_key = #{procKey,jdbcType=VARCHAR},
+      proc_de_key = #{procDeKey,jdbcType=VARCHAR},
+      proc_re_id = #{procReId,jdbcType=BIGINT},
+      `status` = #{status,jdbcType=INTEGER},
+      starter_id = #{starterId,jdbcType=VARCHAR},
+      starter_org_id = #{starterOrgId,jdbcType=VARCHAR},
+      starter_name = #{starterName,jdbcType=VARCHAR},
+      starter_org_name = #{starterOrgName,jdbcType=VARCHAR},
+      starter_dept_id = #{starterDeptId,jdbcType=VARCHAR},
+      starter_dept_name = #{starterDeptName,jdbcType=VARCHAR},
+      flags = #{flags,jdbcType=INTEGER},
+      tenant = #{tenant,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=BIGINT},
+      proc_form_data_key = #{procFormDataKey,jdbcType=VARCHAR},
+      proc_form_key = #{procFormKey,jdbcType=VARCHAR},
+      proc_form_url = #{procFormUrl,jdbcType=VARCHAR},
+      biz_id = #{bizId,jdbcType=VARCHAR},
+      app_key = #{appKey,jdbcType=VARCHAR},
+      var_json = #{varJson,jdbcType=LONGVARCHAR},
+      proc_form_url_app = #{procFormUrlApp,jdbcType=VARCHAR},
+      proc_form_start_url_app = #{procFormStartUrlApp,jdbcType=VARCHAR},
+      task_title = #{taskTitle,jdbcType=LONGVARCHAR},
+      task_type = #{taskType,jdbcType=LONGVARCHAR},
+      proc_view_json = #{procViewJson,jdbcType=LONGVARCHAR},
+      proc_json = #{procJson,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_procinst
+    (gmt_create, gmt_modified, proc_name, proc_key, proc_de_key, proc_re_id, `status`, 
+      starter_id, starter_org_id, starter_name, starter_org_name, starter_dept_id, starter_dept_name, 
+      flags, tenant, pid, proc_form_data_key, proc_form_key, proc_form_url, biz_id, app_key, 
+      var_json, proc_form_url_app, proc_form_start_url_app, task_title, task_type, proc_view_json, 
+      proc_json)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.gmtCreate,jdbcType=BIGINT}, #{item.gmtModified,jdbcType=BIGINT}, #{item.procName,jdbcType=VARCHAR}, 
+        #{item.procKey,jdbcType=VARCHAR}, #{item.procDeKey,jdbcType=VARCHAR}, #{item.procReId,jdbcType=BIGINT}, 
+        #{item.status,jdbcType=INTEGER}, #{item.starterId,jdbcType=VARCHAR}, #{item.starterOrgId,jdbcType=VARCHAR}, 
+        #{item.starterName,jdbcType=VARCHAR}, #{item.starterOrgName,jdbcType=VARCHAR}, 
+        #{item.starterDeptId,jdbcType=VARCHAR}, #{item.starterDeptName,jdbcType=VARCHAR}, 
+        #{item.flags,jdbcType=INTEGER}, #{item.tenant,jdbcType=VARCHAR}, #{item.pid,jdbcType=BIGINT}, 
+        #{item.procFormDataKey,jdbcType=VARCHAR}, #{item.procFormKey,jdbcType=VARCHAR}, 
+        #{item.procFormUrl,jdbcType=VARCHAR}, #{item.bizId,jdbcType=VARCHAR}, #{item.appKey,jdbcType=VARCHAR}, 
+        #{item.varJson,jdbcType=LONGVARCHAR}, #{item.procFormUrlApp,jdbcType=VARCHAR}, 
+        #{item.procFormStartUrlApp,jdbcType=VARCHAR}, #{item.taskTitle,jdbcType=LONGVARCHAR}, 
+        #{item.taskType,jdbcType=LONGVARCHAR}, #{item.procViewJson,jdbcType=LONGVARCHAR}, 
+        #{item.procJson,jdbcType=LONGVARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.RuProcinst" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_procinst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      gmt_create,
+      gmt_modified,
+      proc_name,
+      proc_key,
+      proc_de_key,
+      proc_re_id,
+      `status`,
+      starter_id,
+      starter_org_id,
+      starter_name,
+      starter_org_name,
+      starter_dept_id,
+      starter_dept_name,
+      flags,
+      tenant,
+      pid,
+      proc_form_data_key,
+      proc_form_key,
+      proc_form_url,
+      biz_id,
+      app_key,
+      var_json,
+      proc_form_url_app,
+      proc_form_start_url_app,
+      task_title,
+      task_type,
+      proc_view_json,
+      proc_json,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      #{gmtCreate,jdbcType=BIGINT},
+      #{gmtModified,jdbcType=BIGINT},
+      #{procName,jdbcType=VARCHAR},
+      #{procKey,jdbcType=VARCHAR},
+      #{procDeKey,jdbcType=VARCHAR},
+      #{procReId,jdbcType=BIGINT},
+      #{status,jdbcType=INTEGER},
+      #{starterId,jdbcType=VARCHAR},
+      #{starterOrgId,jdbcType=VARCHAR},
+      #{starterName,jdbcType=VARCHAR},
+      #{starterOrgName,jdbcType=VARCHAR},
+      #{starterDeptId,jdbcType=VARCHAR},
+      #{starterDeptName,jdbcType=VARCHAR},
+      #{flags,jdbcType=INTEGER},
+      #{tenant,jdbcType=VARCHAR},
+      #{pid,jdbcType=BIGINT},
+      #{procFormDataKey,jdbcType=VARCHAR},
+      #{procFormKey,jdbcType=VARCHAR},
+      #{procFormUrl,jdbcType=VARCHAR},
+      #{bizId,jdbcType=VARCHAR},
+      #{appKey,jdbcType=VARCHAR},
+      #{varJson,jdbcType=LONGVARCHAR},
+      #{procFormUrlApp,jdbcType=VARCHAR},
+      #{procFormStartUrlApp,jdbcType=VARCHAR},
+      #{taskTitle,jdbcType=LONGVARCHAR},
+      #{taskType,jdbcType=LONGVARCHAR},
+      #{procViewJson,jdbcType=LONGVARCHAR},
+      #{procJson,jdbcType=LONGVARCHAR},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      proc_name = #{procName,jdbcType=VARCHAR},
+      proc_key = #{procKey,jdbcType=VARCHAR},
+      proc_de_key = #{procDeKey,jdbcType=VARCHAR},
+      proc_re_id = #{procReId,jdbcType=BIGINT},
+      `status` = #{status,jdbcType=INTEGER},
+      starter_id = #{starterId,jdbcType=VARCHAR},
+      starter_org_id = #{starterOrgId,jdbcType=VARCHAR},
+      starter_name = #{starterName,jdbcType=VARCHAR},
+      starter_org_name = #{starterOrgName,jdbcType=VARCHAR},
+      starter_dept_id = #{starterDeptId,jdbcType=VARCHAR},
+      starter_dept_name = #{starterDeptName,jdbcType=VARCHAR},
+      flags = #{flags,jdbcType=INTEGER},
+      tenant = #{tenant,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=BIGINT},
+      proc_form_data_key = #{procFormDataKey,jdbcType=VARCHAR},
+      proc_form_key = #{procFormKey,jdbcType=VARCHAR},
+      proc_form_url = #{procFormUrl,jdbcType=VARCHAR},
+      biz_id = #{bizId,jdbcType=VARCHAR},
+      app_key = #{appKey,jdbcType=VARCHAR},
+      var_json = #{varJson,jdbcType=LONGVARCHAR},
+      proc_form_url_app = #{procFormUrlApp,jdbcType=VARCHAR},
+      proc_form_start_url_app = #{procFormStartUrlApp,jdbcType=VARCHAR},
+      task_title = #{taskTitle,jdbcType=LONGVARCHAR},
+      task_type = #{taskType,jdbcType=LONGVARCHAR},
+      proc_view_json = #{procViewJson,jdbcType=LONGVARCHAR},
+      proc_json = #{procJson,jdbcType=LONGVARCHAR},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.RuProcinst" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_procinst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="procName != null">
+        proc_name,
+      </if>
+      <if test="procKey != null">
+        proc_key,
+      </if>
+      <if test="procDeKey != null">
+        proc_de_key,
+      </if>
+      <if test="procReId != null">
+        proc_re_id,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="starterId != null">
+        starter_id,
+      </if>
+      <if test="starterOrgId != null">
+        starter_org_id,
+      </if>
+      <if test="starterName != null">
+        starter_name,
+      </if>
+      <if test="starterOrgName != null">
+        starter_org_name,
+      </if>
+      <if test="starterDeptId != null">
+        starter_dept_id,
+      </if>
+      <if test="starterDeptName != null">
+        starter_dept_name,
+      </if>
+      <if test="flags != null">
+        flags,
+      </if>
+      <if test="tenant != null">
+        tenant,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="procFormDataKey != null">
+        proc_form_data_key,
+      </if>
+      <if test="procFormKey != null">
+        proc_form_key,
+      </if>
+      <if test="procFormUrl != null">
+        proc_form_url,
+      </if>
+      <if test="bizId != null">
+        biz_id,
+      </if>
+      <if test="appKey != null">
+        app_key,
+      </if>
+      <if test="varJson != null">
+        var_json,
+      </if>
+      <if test="procFormUrlApp != null">
+        proc_form_url_app,
+      </if>
+      <if test="procFormStartUrlApp != null">
+        proc_form_start_url_app,
+      </if>
+      <if test="taskTitle != null">
+        task_title,
+      </if>
+      <if test="taskType != null">
+        task_type,
+      </if>
+      <if test="procViewJson != null">
+        proc_view_json,
+      </if>
+      <if test="procJson != null">
+        proc_json,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="procName != null">
+        #{procName,jdbcType=VARCHAR},
+      </if>
+      <if test="procKey != null">
+        #{procKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procDeKey != null">
+        #{procDeKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procReId != null">
+        #{procReId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="starterId != null">
+        #{starterId,jdbcType=VARCHAR},
+      </if>
+      <if test="starterOrgId != null">
+        #{starterOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="starterName != null">
+        #{starterName,jdbcType=VARCHAR},
+      </if>
+      <if test="starterOrgName != null">
+        #{starterOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="starterDeptId != null">
+        #{starterDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="starterDeptName != null">
+        #{starterDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="flags != null">
+        #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="tenant != null">
+        #{tenant,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="procFormDataKey != null">
+        #{procFormDataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procFormKey != null">
+        #{procFormKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procFormUrl != null">
+        #{procFormUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bizId != null">
+        #{bizId,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null">
+        #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="varJson != null">
+        #{varJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procFormUrlApp != null">
+        #{procFormUrlApp,jdbcType=VARCHAR},
+      </if>
+      <if test="procFormStartUrlApp != null">
+        #{procFormStartUrlApp,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTitle != null">
+        #{taskTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="taskType != null">
+        #{taskType,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procViewJson != null">
+        #{procViewJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procJson != null">
+        #{procJson,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="procName != null">
+        proc_name = #{procName,jdbcType=VARCHAR},
+      </if>
+      <if test="procKey != null">
+        proc_key = #{procKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procDeKey != null">
+        proc_de_key = #{procDeKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procReId != null">
+        proc_re_id = #{procReId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="starterId != null">
+        starter_id = #{starterId,jdbcType=VARCHAR},
+      </if>
+      <if test="starterOrgId != null">
+        starter_org_id = #{starterOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="starterName != null">
+        starter_name = #{starterName,jdbcType=VARCHAR},
+      </if>
+      <if test="starterOrgName != null">
+        starter_org_name = #{starterOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="starterDeptId != null">
+        starter_dept_id = #{starterDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="starterDeptName != null">
+        starter_dept_name = #{starterDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="flags != null">
+        flags = #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="tenant != null">
+        tenant = #{tenant,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="procFormDataKey != null">
+        proc_form_data_key = #{procFormDataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procFormKey != null">
+        proc_form_key = #{procFormKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procFormUrl != null">
+        proc_form_url = #{procFormUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bizId != null">
+        biz_id = #{bizId,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null">
+        app_key = #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="varJson != null">
+        var_json = #{varJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procFormUrlApp != null">
+        proc_form_url_app = #{procFormUrlApp,jdbcType=VARCHAR},
+      </if>
+      <if test="procFormStartUrlApp != null">
+        proc_form_start_url_app = #{procFormStartUrlApp,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTitle != null">
+        task_title = #{taskTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="taskType != null">
+        task_type = #{taskType,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procViewJson != null">
+        proc_view_json = #{procViewJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procJson != null">
+        proc_json = #{procJson,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+    <select id="page" parameterType="org.lg.engine.core.client.model.request.ProcinstPageRequest" resultMap="BaseResultMap">
+        select id,
+        gmt_create,
+        proc_name,
+        proc_key,
+        `status`,
+        flags,
+        starter_name,
+      app_key
+        from t_wf_ru_procinst
+        <where>
+            <if test="minGmtCreate != null and minGmtCreate != 0">
+                gmt_create <![CDATA[>=]]> #{minGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="maxGmtCreate != null and maxGmtCreate != 0">
+                and gmt_create <![CDATA[<=]]> #{maxGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="procName != null and procName != ''">
+                and proc_name like concat('%', #{procName,jdbcType=BIGINT}, '%')
+            </if>
+          <if test="appKey != null and appKey != ''">
+            and app_key = #{appKey,jdbcType=VARCHAR}
+          </if>
+
+        </where>
+        order by gmt_create desc
+        limit #{startRow,jdbcType=BIGINT}, #{pageSize,jdbcType=BIGINT}
+    </select>
+    <select id="pageCount" parameterType="org.lg.engine.core.client.model.request.ProcinstPageRequest" resultType="java.lang.Integer">
+        select count(*)
+        from t_wf_ru_procinst
+        <where>
+            <if test="minGmtCreate != null and minGmtCreate != 0">
+                gmt_create <![CDATA[>=]]> #{minGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="maxGmtCreate != null and maxGmtCreate != 0">
+                and gmt_create <![CDATA[<=]]> #{maxGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="procName != null and procName != ''">
+                and proc_name like concat('%', #{procName,jdbcType=BIGINT}, '%')
+            </if>
+        </where>
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-07-06-->
+    <select id="selectByIdIn" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_procinst
+        where id in
+        <foreach close=")" collection="idCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-07-07-->
+    <select id="selectProcNameById" resultType="java.lang.String">
+        select proc_name
+        from t_wf_ru_procinst
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-07-07-->
+    <select id="selectIdByStarterId" resultType="java.lang.Long">
+        select id
+        from t_wf_ru_procinst
+        where starter_id = #{starterId,jdbcType=VARCHAR}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-07-14-->
+    <update id="updateVarJsonById">
+        update t_wf_ru_procinst
+        set var_json=#{updatedVarJson,jdbcType=LONGVARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="myStartedPage" parameterType="org.lg.engine.core.client.model.request.StartedProcInstRequest" resultMap="BaseResultMap">
+        select id,
+        gmt_create,
+        gmt_modified,
+        proc_name,
+        proc_key,
+        `status`,
+        flags,
+        starter_name
+        from t_wf_ru_procinst
+        <where>
+            starter_id = #{operator.id}
+            <if test="minGmtCreate != null and minGmtCreate != 0">
+                and gmt_create <![CDATA[>=]]> #{minGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="maxGmtCreate != null and maxGmtCreate != 0">
+                and gmt_create <![CDATA[<=]]> #{maxGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="procName != null and procName != ''">
+                and proc_name like concat('%', #{procName,jdbcType=BIGINT}, '%')
+            </if>
+        </where>
+        order by gmt_create desc
+        limit #{startRow,jdbcType=BIGINT}, #{pageSize,jdbcType=BIGINT}
+    </select>
+
+    <select id="myStartedPageCount" resultType="int">
+        select count(*)
+        from t_wf_ru_procinst
+        <where>
+            starter_id = #{operator.id}
+            <if test="minGmtCreate != null and minGmtCreate != 0">
+                and gmt_create <![CDATA[>=]]> #{minGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="maxGmtCreate != null and maxGmtCreate != 0">
+                and gmt_create <![CDATA[<=]]> #{maxGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="procName != null and procName != ''">
+                and proc_name like concat('%', #{procName,jdbcType=BIGINT}, '%')
+            </if>
+        </where>
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-25-->
+    <select id="selectByStarterId" resultType="org.lg.engine.core.model.SortableProcinst">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_procinst
+        where starter_id = #{starterId,jdbcType=VARCHAR}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-09-26-->
+    <select id="selectByProcKeyIn" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_procinst
+        where proc_key in
+        <foreach close=")" collection="procKeyCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-11-03-->
+    <select id="selectIdByProcName" resultType="java.lang.Long">
+        select id
+        from t_wf_ru_procinst
+        where proc_name=#{procName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectDeKeyByProcName" resultType="java.lang.String">
+        select proc_de_key
+        from t_wf_ru_procinst
+        where proc_name=#{procName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByProcName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_procinst
+        where proc_name=#{procName,jdbcType=VARCHAR}
+    </select>
+
+  <select id="selectIdByBizIdAndProcFormDataKey" resultType="java.lang.Long">
+    select id from t_wf_ru_procinst
+    where biz_id = #{bizId,jdbcType=VARCHAR} and proc_form_data_key = #{procFormDataKey,jdbcType=VARCHAR}
+    limit 1
+  </select>
+
+  <select id="countByStarterIdAndProcDeKey" resultType="java.lang.Integer">
+    select count(*) from t_wf_ru_procinst
+    where starter_id = #{starterId,jdbcType=VARCHAR} and proc_de_key = #{procDeKey,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByProcKey" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_wf_ru_procinst
+    where proc_key = #{procKey,jdbcType=VARCHAR} limit 1
+  </select>
+    <select id="selectByProcDeKey" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_wf_ru_procinst
+    where proc_de_key = #{procDeKey,jdbcType=VARCHAR} limit 1
+  </select>
+   <select id="selectAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from t_wf_ru_procinst
+  </select>
+</mapper>

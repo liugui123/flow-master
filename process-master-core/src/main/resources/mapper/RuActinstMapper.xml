@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lg.engine.core.db.mapper.RuActinstMapper">
+  <resultMap id="BaseResultMap" type="org.lg.engine.core.db.model.RuActinst">
+    <!--@mbg.generated-->
+    <!--@Table t_wf_ru_actinst-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
+    <result column="procinst_id" jdbcType="BIGINT" property="procinstId" />
+    <result column="actinst_name" jdbcType="VARCHAR" property="actinstName" />
+    <result column="actinst_key" jdbcType="VARCHAR" property="actinstKey" />
+    <result column="start_time" jdbcType="BIGINT" property="startTime" />
+    <result column="end_time" jdbcType="BIGINT" property="endTime" />
+    <result column="actinst_type" jdbcType="VARCHAR" property="actinstType" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="var_json" jdbcType="LONGVARCHAR" property="varJson" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modified, procinst_id, actinst_name, actinst_key, start_time, 
+    end_time, actinst_type, flags, `status`, var_json
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_wf_ru_actinst
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_wf_ru_actinst
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.RuActinst" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_actinst (gmt_create, gmt_modified, procinst_id, 
+      actinst_name, actinst_key, start_time, 
+      end_time, actinst_type, flags, 
+      `status`, var_json)
+    values (#{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}, #{procinstId,jdbcType=BIGINT}, 
+      #{actinstName,jdbcType=VARCHAR}, #{actinstKey,jdbcType=VARCHAR}, #{startTime,jdbcType=BIGINT}, 
+      #{endTime,jdbcType=BIGINT}, #{actinstType,jdbcType=VARCHAR}, #{flags,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{varJson,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.RuActinst" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_actinst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="procinstId != null">
+        procinst_id,
+      </if>
+      <if test="actinstName != null">
+        actinst_name,
+      </if>
+      <if test="actinstKey != null">
+        actinst_key,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="actinstType != null">
+        actinst_type,
+      </if>
+      <if test="flags != null">
+        flags,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="varJson != null">
+        var_json,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="procinstId != null">
+        #{procinstId,jdbcType=BIGINT},
+      </if>
+      <if test="actinstName != null">
+        #{actinstName,jdbcType=VARCHAR},
+      </if>
+      <if test="actinstKey != null">
+        #{actinstKey,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=BIGINT},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=BIGINT},
+      </if>
+      <if test="actinstType != null">
+        #{actinstType,jdbcType=VARCHAR},
+      </if>
+      <if test="flags != null">
+        #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="varJson != null">
+        #{varJson,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lg.engine.core.db.model.RuActinst">
+    <!--@mbg.generated-->
+    update t_wf_ru_actinst
+    <set>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="procinstId != null">
+        procinst_id = #{procinstId,jdbcType=BIGINT},
+      </if>
+      <if test="actinstName != null">
+        actinst_name = #{actinstName,jdbcType=VARCHAR},
+      </if>
+      <if test="actinstKey != null">
+        actinst_key = #{actinstKey,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=BIGINT},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=BIGINT},
+      </if>
+      <if test="actinstType != null">
+        actinst_type = #{actinstType,jdbcType=VARCHAR},
+      </if>
+      <if test="flags != null">
+        flags = #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="varJson != null">
+        var_json = #{varJson,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lg.engine.core.db.model.RuActinst">
+    <!--@mbg.generated-->
+    update t_wf_ru_actinst
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      procinst_id = #{procinstId,jdbcType=BIGINT},
+      actinst_name = #{actinstName,jdbcType=VARCHAR},
+      actinst_key = #{actinstKey,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=BIGINT},
+      end_time = #{endTime,jdbcType=BIGINT},
+      actinst_type = #{actinstType,jdbcType=VARCHAR},
+      flags = #{flags,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      var_json = #{varJson,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update t_wf_ru_actinst
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="gmt_create = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.gmtCreate,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="gmt_modified = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.gmtModified,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="procinst_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procinstId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="actinst_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.actinstName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="actinst_key = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.actinstKey,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="start_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.startTime,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="end_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.endTime,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="actinst_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.actinstType,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="flags = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.flags,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="var_json = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.varJson,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update t_wf_ru_actinst
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="gmt_create = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.gmtCreate != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.gmtCreate,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="gmt_modified = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.gmtModified != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.gmtModified,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="procinst_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.procinstId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.procinstId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="actinst_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.actinstName != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.actinstName,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="actinst_key = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.actinstKey != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.actinstKey,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="start_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.startTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.startTime,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="end_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.endTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.endTime,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="actinst_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.actinstType != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.actinstType,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="flags = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.flags != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.flags,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.status != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="var_json = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.varJson != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.varJson,jdbcType=LONGVARCHAR}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_actinst
+    (id,gmt_create, gmt_modified, procinst_id, actinst_name, actinst_key, start_time, end_time,
+      actinst_type, flags, `status`, var_json)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT},#{item.gmtCreate,jdbcType=BIGINT}, #{item.gmtModified,jdbcType=BIGINT}, #{item.procinstId,jdbcType=BIGINT},
+        #{item.actinstName,jdbcType=VARCHAR}, #{item.actinstKey,jdbcType=VARCHAR}, #{item.startTime,jdbcType=BIGINT}, 
+        #{item.endTime,jdbcType=BIGINT}, #{item.actinstType,jdbcType=VARCHAR}, #{item.flags,jdbcType=INTEGER}, 
+        #{item.status,jdbcType=INTEGER}, #{item.varJson,jdbcType=LONGVARCHAR})
+    </foreach>
+  </insert>
+    <!--auto generated by MybatisCodeHelper on 2021-05-18-->
+    <!--  &amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;update id="updateStatus"&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;-->
+    <!--    update t_wf_ru_actinst-->
+    <!--    set `status`=#{updatedStatus,jdbcType=INTEGER}-->
+    <!--  &amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;/update&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;-->
+    <!--auto generated by MybatisCodeHelper on 2021-05-18-->
+    <update id="updateStatusById">
+        update t_wf_ru_actinst
+        set `status`=#{updatedStatus,jdbcType=INTEGER}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <!--auto generated by MybatisCodeHelper on 2021-05-18-->
+    <select id="selectStatusById" resultType="java.lang.Integer">
+        select `status`
+        from t_wf_ru_actinst
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-05-18-->
+    <select id="selectStatusByIdIn" resultType="java.lang.Integer">
+        select `status`
+        from t_wf_ru_actinst
+        where id in
+        <foreach close=")" collection="idCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-05-18-->
+    <select id="selectIdByIdInAndStatus" resultType="java.lang.Long">
+        select id
+        from t_wf_ru_actinst
+        where id in
+        <foreach close=")" collection="idCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+        and `status` = #{status,jdbcType=INTEGER}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-05-19-->
+    <update id="updateStatusByProcInstId">
+        update t_wf_ru_actinst
+        set `status`=#{updatedStatus,jdbcType=INTEGER}
+        where procinst_id = #{procinstId,jdbcType=BIGINT}
+    </update>
+    <!--auto generated by MybatisCodeHelper on 2021-05-21-->
+    <select id="selectActinstTypeById" resultType="java.lang.String">
+        select actinst_type
+        from t_wf_ru_actinst
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <select id="selectByActinstKey" resultType="org.lg.engine.core.db.model.RuActinst">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst
+        where actinst_key = #{actinstKey,jdbcType=VARCHAR}
+    </select>
+    <select id="selectActInstId" resultType="org.lg.engine.core.db.model.RuActinst">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst
+        where status = #{status,jdbcType=INTEGER}
+        and procinst_id = #{procinstId,jdbcType=BIGINT}
+    </select>
+    <select id="selectStartActInstId" resultType="org.lg.engine.core.db.model.RuActinst">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst
+        where actinst_type = #{actinstType,jdbcType=VARCHAR}
+        and procinst_id = #{procinstId,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-06-24-->
+    <update id="updateStatusByIdIn">
+        update t_wf_ru_actinst
+        set `status`=#{updatedStatus,jdbcType=INTEGER}
+        where id in
+        <foreach close=")" collection="idCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <!--auto generated by MybatisCodeHelper on 2021-07-01-->
+    <select id="selectByProcInstIdInAndStatus" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst
+        where procinst_id in
+        <foreach close=")" collection="procInstIdCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+        and `status` = #{status,jdbcType=INTEGER}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-07-05-->
+    <update id="updateStatusAndEndTimeById">
+        update t_wf_ru_actinst
+        set `status`=#{updatedStatus,jdbcType=INTEGER},
+        end_time=#{updatedEndTime,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <!--auto generated by MybatisCodeHelper on 2021-07-06-->
+    <select id="selectByIdIn" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst
+        where id in
+        <foreach close=")" collection="idCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-07-29-->
+    <select id="selectByProcinstIdAndStatus" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst
+        where procinst_id = #{procinstId,jdbcType=BIGINT}
+        and `status` = #{status,jdbcType=INTEGER}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-03-->
+    <select id="selectByProcInstId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst
+        where procinst_id=#{procinstId,jdbcType=BIGINT}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-19-->
+    <select id="selectActinstTypeByIdIn" resultMap="BaseResultMap">
+        select id,`actinst_type`
+        from t_wf_ru_actinst
+        where `id` in
+        <foreach close=")" collection="idCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-09-07-->
+    <select id="selectFirstByActinstKeyAndProcinstId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst
+        where actinst_key=#{actinstKey,jdbcType=VARCHAR} and procinst_id=#{procinstId,jdbcType=BIGINT} limit 1
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-09-07-->
+    <select id="selectFirstIdByActinstKeyAndProcinstId" resultType="java.lang.Long">
+        select id
+        from t_wf_ru_actinst
+        where actinst_key=#{actinstKey,jdbcType=VARCHAR} and procinst_id=#{procinstId,jdbcType=BIGINT} limit 1
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-10-11-->
+    <select id="selectIdByIdInAndStatusNot" resultType="java.lang.Long">
+        select id
+        from t_wf_ru_actinst
+        where id in
+        <foreach close=")" collection="idCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+        and `status` <![CDATA[<>]]> #{notStatus,jdbcType=INTEGER}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-11-03-->
+    <select id="selectIdByActinstName" resultType="java.lang.Long">
+        select id
+        from t_wf_ru_actinst
+        where actinst_name=#{actinstName,jdbcType=VARCHAR}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-12-23-->
+    <select id="selectByActinstKeyIn" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst
+        where actinst_key in
+        <foreach close=")" collection="actinstKeyCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-12-29-->
+    <select id="selectByActinstKeyInAndProcinstId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst
+        where actinst_key in
+        <foreach close=")" collection="actinstKeyCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+        and procinst_id=#{procinstId,jdbcType=BIGINT}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2022-02-24-->
+    <select id="selectVarJsonById" resultType="java.lang.String">
+        select var_json
+        from t_wf_ru_actinst
+        where id=#{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectIdByProcinstIdAndActinstNameIn" resultType="java.lang.Long">
+        select id
+        from t_wf_ru_actinst
+        where actinst_name in
+        <foreach close=")" collection="actinstNames" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+        and procinst_id=#{procinstId,jdbcType=BIGINT}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2022-08-30-->
+    <select id="selectFirstByActinstKeyAndStatus" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst
+        where actinst_key=#{actinstKey,jdbcType=VARCHAR} and `status`=#{status,jdbcType=INTEGER} limit 1
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2022-09-02-->
+    <delete id="deleteByActinstKeyIn">
+        delete from t_wf_ru_actinst
+        where actinst_key in
+        <foreach close=")" collection="actinstKeyCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </delete>
+
+<!--auto generated by MybatisCodeHelper on 2022-09-02-->
+    <delete id="deleteByIdIn">
+        delete from t_wf_ru_actinst
+        where id in
+        <foreach close=")" collection="idCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </delete>
+
+<!--auto generated by MybatisCodeHelper on 2022-09-06-->
+    <select id="selectFirstByActinstKeyAndStatusAndProcinstId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst
+        where actinst_key=#{actinstKey,jdbcType=VARCHAR} and `status`=#{status,jdbcType=INTEGER} and
+        procinst_id=#{procinstId,jdbcType=BIGINT} limit 1
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2024-04-30-->
+  <delete id="deleteByProcinstId">
+        delete from t_wf_ru_actinst
+        where procinst_id=#{procinstId,jdbcType=BIGINT}
+    </delete>
+</mapper>

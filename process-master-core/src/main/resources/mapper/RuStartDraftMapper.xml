@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lg.engine.core.db.mapper.RuStartDraftMapper">
+  <resultMap id="BaseResultMap" type="org.lg.engine.core.db.model.RuStartDraft">
+    <!--@mbg.generated-->
+    <!--@Table t_wf_ru_start_draft-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
+    <result column="assignee_id" jdbcType="VARCHAR" property="assigneeId" />
+    <result column="assignee_name" jdbcType="VARCHAR" property="assigneeName" />
+    <result column="assignee_dept_id" jdbcType="VARCHAR" property="assigneeDeptId" />
+    <result column="assignee_dept_name" jdbcType="VARCHAR" property="assigneeDeptName" />
+    <result column="assignee_org_id" jdbcType="VARCHAR" property="assigneeOrgId" />
+    <result column="assignee_org_name" jdbcType="VARCHAR" property="assigneeOrgName" />
+    <result column="proc_key" jdbcType="VARCHAR" property="procKey" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+    <result column="app_key" jdbcType="VARCHAR" property="appKey" />
+    <result column="proc_form_data_key" jdbcType="VARCHAR" property="procFormDataKey" />
+    <result column="proc_form_key" jdbcType="VARCHAR" property="procFormKey" />
+    <result column="draft_title" jdbcType="VARCHAR" property="draftTitle" />
+    <result column="form_model_start_url_app" jdbcType="VARCHAR" property="formModelStartUrlApp" />
+    <result column="form_model_start_url" jdbcType="VARCHAR" property="formModelStartUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modified, assignee_id, assignee_name, assignee_dept_id, assignee_dept_name, 
+    assignee_org_id, assignee_org_name, proc_key, `status`, flags, app_key, proc_form_data_key, 
+    proc_form_key, draft_title, form_model_start_url_app, form_model_start_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_wf_ru_start_draft
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_wf_ru_start_draft
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.RuStartDraft" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_start_draft (gmt_create, gmt_modified, assignee_id, 
+      assignee_name, assignee_dept_id, assignee_dept_name, 
+      assignee_org_id, assignee_org_name, proc_key, 
+      `status`, flags, app_key, 
+      proc_form_data_key, proc_form_key, draft_title, 
+      form_model_start_url_app, form_model_start_url
+      )
+    values (#{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}, #{assigneeId,jdbcType=VARCHAR}, 
+      #{assigneeName,jdbcType=VARCHAR}, #{assigneeDeptId,jdbcType=VARCHAR}, #{assigneeDeptName,jdbcType=VARCHAR}, 
+      #{assigneeOrgId,jdbcType=VARCHAR}, #{assigneeOrgName,jdbcType=VARCHAR}, #{procKey,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{flags,jdbcType=INTEGER}, #{appKey,jdbcType=VARCHAR}, 
+      #{procFormDataKey,jdbcType=VARCHAR}, #{procFormKey,jdbcType=VARCHAR}, #{draftTitle,jdbcType=VARCHAR}, 
+      #{formModelStartUrlApp,jdbcType=VARCHAR}, #{formModelStartUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.lg.engine.core.db.model.RuStartDraft">
+    <!--@mbg.generated-->
+    update t_wf_ru_start_draft
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      assignee_id = #{assigneeId,jdbcType=VARCHAR},
+      assignee_name = #{assigneeName,jdbcType=VARCHAR},
+      assignee_dept_id = #{assigneeDeptId,jdbcType=VARCHAR},
+      assignee_dept_name = #{assigneeDeptName,jdbcType=VARCHAR},
+      assignee_org_id = #{assigneeOrgId,jdbcType=VARCHAR},
+      assignee_org_name = #{assigneeOrgName,jdbcType=VARCHAR},
+      proc_key = #{procKey,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      flags = #{flags,jdbcType=INTEGER},
+      app_key = #{appKey,jdbcType=VARCHAR},
+      proc_form_data_key = #{procFormDataKey,jdbcType=VARCHAR},
+      proc_form_key = #{procFormKey,jdbcType=VARCHAR},
+      draft_title = #{draftTitle,jdbcType=VARCHAR},
+      form_model_start_url_app = #{formModelStartUrlApp,jdbcType=VARCHAR},
+      form_model_start_url = #{formModelStartUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_start_draft
+    (gmt_create, gmt_modified, assignee_id, assignee_name, assignee_dept_id, assignee_dept_name, 
+      assignee_org_id, assignee_org_name, proc_key, `status`, flags, app_key, proc_form_data_key, 
+      proc_form_key, draft_title, form_model_start_url_app, form_model_start_url)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.gmtCreate,jdbcType=BIGINT}, #{item.gmtModified,jdbcType=BIGINT}, #{item.assigneeId,jdbcType=VARCHAR}, 
+        #{item.assigneeName,jdbcType=VARCHAR}, #{item.assigneeDeptId,jdbcType=VARCHAR}, 
+        #{item.assigneeDeptName,jdbcType=VARCHAR}, #{item.assigneeOrgId,jdbcType=VARCHAR}, 
+        #{item.assigneeOrgName,jdbcType=VARCHAR}, #{item.procKey,jdbcType=VARCHAR}, #{item.status,jdbcType=INTEGER}, 
+        #{item.flags,jdbcType=INTEGER}, #{item.appKey,jdbcType=VARCHAR}, #{item.procFormDataKey,jdbcType=VARCHAR}, 
+        #{item.procFormKey,jdbcType=VARCHAR}, #{item.draftTitle,jdbcType=VARCHAR}, #{item.formModelStartUrlApp,jdbcType=VARCHAR}, 
+        #{item.formModelStartUrl,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+
+    <select id="page" parameterType="org.lg.engine.core.client.model.request.MyStartDraftRequest" resultMap="BaseResultMap">
+        select *
+        from t_wf_ru_start_draft
+        <where>
+            <if test="draftTitle != null and draftTitle != ''">
+                and draft_title like concat('%', #{draftTitle,jdbcType=BIGINT}, '%')
+            </if>
+        </where>
+        order by gmt_create desc
+        limit #{startRow,jdbcType=BIGINT}, #{pageSize,jdbcType=BIGINT}
+    </select>
+
+    <select id="pageCount" parameterType="org.lg.engine.core.client.model.request.MyStartDraftRequest" resultType="java.lang.Integer">
+        select count(*)
+        from t_wf_ru_start_draft
+        <where>
+            <if test="draftTitle != null and draftTitle != ''">
+                and draft_title like concat('%', #{draftTitle,jdbcType=BIGINT}, '%')
+            </if>
+        </where>
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2024-03-01-->
+    <select id="selectFirstByProcFormDataKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_start_draft
+        where proc_form_data_key=#{procFormDataKey,jdbcType=VARCHAR} limit 1
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2024-03-02-->
+    <delete id="deleteByProcFormDataKey">
+        delete from t_wf_ru_start_draft
+        where proc_form_data_key=#{procFormDataKey,jdbcType=VARCHAR}
+    </delete>
+
+</mapper>

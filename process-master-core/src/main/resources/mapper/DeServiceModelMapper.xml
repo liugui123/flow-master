@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lg.engine.core.db.mapper.DeServiceModelMapper">
+  <resultMap id="BaseResultMap" type="org.lg.engine.core.db.model.DeServiceModel">
+    <!--@mbg.generated-->
+    <!--@Table t_wf_de_service_model-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+    <result column="service_model_key" jdbcType="VARCHAR" property="serviceModelKey" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="app_key" jdbcType="VARCHAR" property="appKey" />
+    <result column="model_key" jdbcType="VARCHAR" property="modelKey" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modified, `status`, flags, service_model_key, `name`, url, app_key, 
+    model_key
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_wf_de_service_model
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_wf_de_service_model
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.DeServiceModel" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_de_service_model (gmt_create, gmt_modified, `status`, 
+      flags, service_model_key, `name`, 
+      url, app_key, model_key
+      )
+    values (#{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, 
+      #{flags,jdbcType=INTEGER}, #{serviceModelKey,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{appKey,jdbcType=VARCHAR}, #{modelKey,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.DeServiceModel" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_de_service_model
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="flags != null">
+        flags,
+      </if>
+      <if test="serviceModelKey != null">
+        service_model_key,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="appKey != null">
+        app_key,
+      </if>
+      <if test="modelKey != null">
+        model_key,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="flags != null">
+        #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="serviceModelKey != null">
+        #{serviceModelKey,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null">
+        #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="modelKey != null">
+        #{modelKey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lg.engine.core.db.model.DeServiceModel">
+    <!--@mbg.generated-->
+    update t_wf_de_service_model
+    <set>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="flags != null">
+        flags = #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="serviceModelKey != null">
+        service_model_key = #{serviceModelKey,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null">
+        app_key = #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="modelKey != null">
+        model_key = #{modelKey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lg.engine.core.db.model.DeServiceModel">
+    <!--@mbg.generated-->
+    update t_wf_de_service_model
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      `status` = #{status,jdbcType=INTEGER},
+      flags = #{flags,jdbcType=INTEGER},
+      service_model_key = #{serviceModelKey,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      app_key = #{appKey,jdbcType=VARCHAR},
+      model_key = #{modelKey,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_de_service_model
+    (gmt_create, gmt_modified, `status`, flags, service_model_key, `name`, url, app_key, 
+      model_key)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.gmtCreate,jdbcType=BIGINT}, #{item.gmtModified,jdbcType=BIGINT}, #{item.status,jdbcType=INTEGER}, 
+        #{item.flags,jdbcType=INTEGER}, #{item.serviceModelKey,jdbcType=VARCHAR}, #{item.name,jdbcType=VARCHAR}, 
+        #{item.url,jdbcType=VARCHAR}, #{item.appKey,jdbcType=VARCHAR}, #{item.modelKey,jdbcType=VARCHAR}
+        )
+    </foreach>
+  </insert>
+
+<!--auto generated by MybatisCodeHelper on 2024-02-05-->
+  <select id="selectFirstByServiceModelKey" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_wf_de_service_model
+    where service_model_key=#{serviceModelKey,jdbcType=VARCHAR} limit 1
+  </select>
+
+  <!--auto generated by MybatisCodeHelper on 2021-12-10-->
+  <select id="selectFirstIdsByServiceModelKey" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_wf_de_service_model
+    where service_model_key=#{serviceModelKey,jdbcType=VARCHAR} limit 1
+  </select>
+</mapper>

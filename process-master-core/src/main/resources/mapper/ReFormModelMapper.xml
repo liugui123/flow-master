@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lg.engine.core.db.mapper.ReFormModelMapper">
+    <resultMap id="BaseResultMap" type="org.lg.engine.core.db.model.ReFormModel">
+        <!--@mbg.generated-->
+        <!--@Table t_wf_re_form_model-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate"/>
+        <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified"/>
+        <result column="form_model_key" jdbcType="VARCHAR" property="formModelKey"/>
+        <result column="form_model_name" jdbcType="VARCHAR" property="formModelName"/>
+        <result column="form_model_url" jdbcType="VARCHAR" property="formModelUrl"/>
+        <result column="form_model_start_url" jdbcType="VARCHAR" property="formModelStartUrl"/>
+        <result column="de_form_id" jdbcType="BIGINT" property="deFormId"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="flags" jdbcType="INTEGER" property="flags"/>
+        <result column="model_key" jdbcType="VARCHAR" property="modelKey"/>
+        <result column="model_version" jdbcType="INTEGER" property="modelVersion"/>
+        <result column="biz_id" jdbcType="VARCHAR" property="bizId"/>
+        <result column="form_model_url_app" jdbcType="VARCHAR" property="formModelUrlApp"/>
+        <result column="form_model_start_url_app" jdbcType="VARCHAR" property="formModelStartUrlApp"/>
+        <result column="task_title" jdbcType="LONGVARCHAR" property="taskTitle"/>
+        <result column="task_type" jdbcType="LONGVARCHAR" property="taskType"/>
+        <result column="app_key" jdbcType="VARCHAR" property="appKey"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, gmt_create, gmt_modified, form_model_key, form_model_name, form_model_url, form_model_start_url,
+        de_form_id, `status`, flags, model_key, model_version, biz_id, form_model_url_app,
+        form_model_start_url_app, task_title, task_type, app_key
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from t_wf_re_form_model
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete from t_wf_re_form_model
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.ReFormModel"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_wf_re_form_model (gmt_create, gmt_modified, form_model_key,
+        form_model_name, form_model_url, form_model_start_url,
+        de_form_id, `status`, flags,
+        model_key, model_version, biz_id,
+        form_model_url_app, form_model_start_url_app,
+        task_title, task_type, app_key
+        )
+        values (#{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}, #{formModelKey,jdbcType=VARCHAR},
+        #{formModelName,jdbcType=VARCHAR}, #{formModelUrl,jdbcType=VARCHAR}, #{formModelStartUrl,jdbcType=VARCHAR},
+        #{deFormId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{flags,jdbcType=INTEGER},
+        #{modelKey,jdbcType=VARCHAR}, #{modelVersion,jdbcType=INTEGER}, #{bizId,jdbcType=VARCHAR},
+        #{formModelUrlApp,jdbcType=VARCHAR}, #{formModelStartUrlApp,jdbcType=VARCHAR},
+        #{taskTitle,jdbcType=LONGVARCHAR}, #{taskType,jdbcType=LONGVARCHAR}, #{appKey,jdbcType=VARCHAR}
+        )
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="org.lg.engine.core.db.model.ReFormModel">
+        <!--@mbg.generated-->
+        update t_wf_re_form_model
+        set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+        gmt_modified = #{gmtModified,jdbcType=BIGINT},
+        form_model_key = #{formModelKey,jdbcType=VARCHAR},
+        form_model_name = #{formModelName,jdbcType=VARCHAR},
+        form_model_url = #{formModelUrl,jdbcType=VARCHAR},
+        form_model_start_url = #{formModelStartUrl,jdbcType=VARCHAR},
+        de_form_id = #{deFormId,jdbcType=BIGINT},
+        `status` = #{status,jdbcType=INTEGER},
+        flags = #{flags,jdbcType=INTEGER},
+        model_key = #{modelKey,jdbcType=VARCHAR},
+        model_version = #{modelVersion,jdbcType=INTEGER},
+        biz_id = #{bizId,jdbcType=VARCHAR},
+        form_model_url_app = #{formModelUrlApp,jdbcType=VARCHAR},
+        form_model_start_url_app = #{formModelStartUrlApp,jdbcType=VARCHAR},
+        task_title = #{taskTitle,jdbcType=LONGVARCHAR},
+        task_type = #{taskType,jdbcType=LONGVARCHAR},
+        app_key = #{appKey,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_wf_re_form_model
+        (gmt_create, gmt_modified, form_model_key, form_model_name, form_model_url, form_model_start_url,
+        de_form_id, `status`, flags, model_key, model_version, biz_id, form_model_url_app,
+        form_model_start_url_app, task_title, task_type, app_key)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.gmtCreate,jdbcType=BIGINT}, #{item.gmtModified,jdbcType=BIGINT},
+            #{item.formModelKey,jdbcType=VARCHAR},
+            #{item.formModelName,jdbcType=VARCHAR}, #{item.formModelUrl,jdbcType=VARCHAR},
+            #{item.formModelStartUrl,jdbcType=VARCHAR}, #{item.deFormId,jdbcType=BIGINT},
+            #{item.status,jdbcType=INTEGER},
+            #{item.flags,jdbcType=INTEGER}, #{item.modelKey,jdbcType=VARCHAR}, #{item.modelVersion,jdbcType=INTEGER},
+            #{item.bizId,jdbcType=VARCHAR}, #{item.formModelUrlApp,jdbcType=VARCHAR},
+            #{item.formModelStartUrlApp,jdbcType=VARCHAR},
+            #{item.taskTitle,jdbcType=LONGVARCHAR}, #{item.taskType,jdbcType=LONGVARCHAR},
+            #{item.appKey,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+
+    <!--auto generated by MybatisCodeHelper on 2021-09-19-->
+    <select id="selectFirstVersionByFormModelKeyOrderByVersionDesc" resultType="java.lang.Integer">
+        select model_version
+        from t_wf_re_form_model
+        where form_model_key = #{formModelKey,jdbcType=VARCHAR}
+        order by model_version desc limit 1
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-09-19-->
+    <select id="selectFirstByFormModelKeyOrderByModelVersionDesc" resultMap="BaseResultMap">
+        select id,
+        form_model_key,
+        form_model_name,
+        form_model_url,
+        form_model_start_url,
+        de_form_id,
+        biz_id,
+        form_model_url_app,
+        form_model_start_url_app,
+        task_title,
+        task_type
+        from t_wf_re_form_model
+        where form_model_key = #{formModelKey,jdbcType=VARCHAR}
+        order by id desc limit 1
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-11-01-->
+    <select id="selectMaxVersionByAppKey" resultType="java.lang.Integer">
+        select model_version
+        from t_wf_re_form_model
+        where model_key = #{modelKey,jdbcType=VARCHAR}
+        order by model_version desc limit 1
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2024-01-09-->
+    <select id="selectMaxVersionFormByAppKey" resultMap="BaseResultMap">
+        select a.* from t_wf_re_form_model a
+        inner join (
+        select max(id) id from t_wf_re_form_model
+        <where>
+            <if test="likeFormModelName != null">
+                and form_model_name like concat('%', #{likeFormModelName,jdbcType=VARCHAR}, '%')
+            </if>
+            and app_key=#{appKey,jdbcType=VARCHAR}
+            and `status` = 0
+        </where>
+        group by form_model_key
+        )b on a.id = b.id
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2024-02-27-->
+    <select id="selectByIdIn" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_wf_re_form_model
+        where id in
+        <foreach item="item" index="index" collection="idCollection"
+                 open="(" separator="," close=")">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2024-05-13-->
+    <select id="pageByModelKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_wf_re_form_model
+        where form_model_key=#{modelKey,jdbcType=VARCHAR}
+        and status = #{status,jdbcType=INTEGER}
+
+        order by id desc
+        limit #{startRow,jdbcType=BIGINT}, #{pageSize,jdbcType=BIGINT}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2024-05-13-->
+    <select id="countByModelKey" resultType="java.lang.Integer">
+        select count(1)
+        from t_wf_re_form_model
+        where form_model_key=#{modelKey,jdbcType=VARCHAR}
+        and status = #{status,jdbcType=INTEGER}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2024-05-14-->
+    <update id="updateStatusById">
+        update t_wf_re_form_model
+        set `status`=#{updatedStatus,jdbcType=INTEGER}
+        where id=#{id,jdbcType=BIGINT}
+    </update>
+
+<!--auto generated by MybatisCodeHelper on 2024-05-14-->
+    <update id="updateStatusByFormModelKey">
+        update t_wf_re_form_model
+        set `status`=#{updatedStatus,jdbcType=INTEGER}
+        where form_model_key=#{formModelKey,jdbcType=VARCHAR}
+    </update>
+
+
+</mapper>

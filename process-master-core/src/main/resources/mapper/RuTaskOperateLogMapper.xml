@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lg.engine.core.db.mapper.RuTaskOperateLogMapper">
+    <resultMap id="BaseResultMap" type="org.lg.engine.core.db.model.RuTaskOperateLog">
+        <!--@mbg.generated-->
+        <!--@Table t_wf_ru_task_operate_log-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate"/>
+        <result column="task_id" jdbcType="BIGINT" property="taskId"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="flags" jdbcType="INTEGER" property="flags"/>
+        <result column="task_desc" jdbcType="VARCHAR" property="taskDesc"/>
+        <result column="procinst_name" jdbcType="VARCHAR" property="procinstName"/>
+        <result column="procinst_key" jdbcType="VARCHAR" property="procinstKey"/>
+        <result column="operator_id" jdbcType="VARCHAR" property="operatorId"/>
+        <result column="operator_name" jdbcType="VARCHAR" property="operatorName"/>
+        <result column="operator_org_id" jdbcType="VARCHAR" property="operatorOrgId"/>
+        <result column="operator_org_name" jdbcType="VARCHAR" property="operatorOrgName"/>
+        <result column="operator_dept_id" jdbcType="VARCHAR" property="operatorDeptId"/>
+        <result column="operator_dept_name" jdbcType="VARCHAR" property="operatorDeptName"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, gmt_create, task_id, `status`, flags, task_desc, procinst_name, procinst_key,
+        operator_id, operator_name, operator_org_id, operator_org_name, operator_dept_id,
+        operator_dept_name
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from t_wf_ru_task_operate_log
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from t_wf_ru_task_operate_log
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.RuTaskOperateLog"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_wf_ru_task_operate_log (gmt_create, task_id, `status`,
+        flags, task_desc, procinst_name,
+        procinst_key, operator_id, operator_name,
+        operator_org_id, operator_org_name, operator_dept_id,
+        operator_dept_name)
+        values (#{gmtCreate,jdbcType=BIGINT}, #{taskId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER},
+        #{flags,jdbcType=INTEGER}, #{taskDesc,jdbcType=VARCHAR}, #{procinstName,jdbcType=VARCHAR},
+        #{procinstKey,jdbcType=VARCHAR}, #{operatorId,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR},
+        #{operatorOrgId,jdbcType=VARCHAR}, #{operatorOrgName,jdbcType=VARCHAR},
+        #{operatorDeptId,jdbcType=VARCHAR},
+        #{operatorDeptName,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="org.lg.engine.core.db.model.RuTaskOperateLog">
+        <!--@mbg.generated-->
+        update t_wf_ru_task_operate_log
+        set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+        task_id = #{taskId,jdbcType=BIGINT},
+        `status` = #{status,jdbcType=INTEGER},
+        flags = #{flags,jdbcType=INTEGER},
+        task_desc = #{taskDesc,jdbcType=VARCHAR},
+        procinst_name = #{procinstName,jdbcType=VARCHAR},
+        procinst_key = #{procinstKey,jdbcType=VARCHAR},
+        operator_id = #{operatorId,jdbcType=VARCHAR},
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+        operator_org_id = #{operatorOrgId,jdbcType=VARCHAR},
+        operator_org_name = #{operatorOrgName,jdbcType=VARCHAR},
+        operator_dept_id = #{operatorDeptId,jdbcType=VARCHAR},
+        operator_dept_name = #{operatorDeptName,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_wf_ru_task_operate_log
+        (gmt_create, task_id, `status`, flags, task_desc, procinst_name, procinst_key, operator_id,
+        operator_name, operator_org_id, operator_org_name, operator_dept_id, operator_dept_name)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.gmtCreate,jdbcType=BIGINT}, #{item.taskId,jdbcType=BIGINT}, #{item.status,jdbcType=INTEGER},
+            #{item.flags,jdbcType=INTEGER}, #{item.taskDesc,jdbcType=VARCHAR}, #{item.procinstName,jdbcType=VARCHAR},
+            #{item.procinstKey,jdbcType=VARCHAR}, #{item.operatorId,jdbcType=VARCHAR},
+            #{item.operatorName,jdbcType=VARCHAR},
+            #{item.operatorOrgId,jdbcType=VARCHAR}, #{item.operatorOrgName,jdbcType=VARCHAR},
+            #{item.operatorDeptId,jdbcType=VARCHAR}, #{item.operatorDeptName,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+    <select id="selectByTaskId" resultType="org.lg.engine.core.db.model.RuTaskOperateLog">
+        select
+        <include refid="Base_Column_List"/>
+        from t_wf_ru_task_operate_log
+        where task_id = #{taskId,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-06-30-->
+    <select id="selectByIdBetweenEqual" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_wf_ru_task_operate_log
+        where id <![CDATA[>=]]> #{minId,jdbcType=BIGINT}
+        and id <![CDATA[<=]]> #{maxId,jdbcType=BIGINT}
+        order by id desc
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-06-30-->
+    <select id="selectMaxIdByGmtCreateBetweenEqual" resultType="java.lang.Long">
+        select max(id) as maxid
+        from t_wf_ru_task_operate_log
+        <where>
+            <if test="minGmtCreate != null">
+                gmt_create <![CDATA[>=]]> #{minGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="maxGmtCreate != null">
+                and gmt_create <![CDATA[<=]]> #{maxGmtCreate,jdbcType=BIGINT}
+            </if>
+        </where>
+        order by id desc
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-07-01-->
+    <select id="selectMinIdByGmtCreateBetweenEqual" resultType="java.lang.Long">
+        select min(id) as minid
+        from t_wf_ru_task_operate_log
+        <where>
+            <if test="minGmtCreate != null">
+                gmt_create <![CDATA[>=]]> #{minGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="maxGmtCreate != null">
+                and gmt_create <![CDATA[<=]]> #{maxGmtCreate,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-07-01-->
+    <select id="selectMaxId" resultType="java.lang.Long">
+        select max(id) as maxid
+        from t_wf_ru_task_operate_log
+    </select>
+
+    <insert id="saveWithId" keyColumn="id" keyProperty="id"
+            parameterType="org.lg.engine.core.db.model.RuTaskOperateLog" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_wf_ru_task_operate_log (id, gmt_create, task_id, `status`,
+        flags, task_desc, procinst_name,
+        procinst_key, operator_id, operator_name,
+        operator_org_id, operator_org_name, operator_dept_id,
+        operator_dept_name)
+        values ((select a.id+1 from (select max(id) id from t_wf_ru_task_operate_log) a), #{gmtCreate,jdbcType=BIGINT}, #{taskId,jdbcType=BIGINT},
+        #{status,jdbcType=INTEGER},
+        #{flags,jdbcType=INTEGER}, #{taskDesc,jdbcType=VARCHAR}, #{procinstName,jdbcType=VARCHAR},
+        #{procinstKey,jdbcType=VARCHAR}, #{operatorId,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR},
+        #{operatorOrgId,jdbcType=VARCHAR}, #{operatorOrgName,jdbcType=VARCHAR},
+        #{operatorDeptId,jdbcType=VARCHAR},
+        #{operatorDeptName,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="page" parameterType="org.lg.engine.core.client.model.request.TaskOpeLogPageRequest" resultMap="BaseResultMap">
+        select *
+        from t_wf_ru_task_operate_log
+        <where>
+            <if test="minGmtCreate != null">
+                gmt_create <![CDATA[>=]]> #{minGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="maxGmtCreate != null">
+                and gmt_create <![CDATA[<=]]> #{maxGmtCreate,jdbcType=BIGINT}
+            </if>
+        </where>
+        order by id desc
+        limit #{startRow,jdbcType=BIGINT}, #{pageSize,jdbcType=BIGINT}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-06-30-->
+    <select id="countByGmtCreate" resultType="java.lang.Integer">
+        select count(*)
+        from t_wf_ru_task_operate_log
+        <where>
+            <if test="minGmtCreate != null">
+                gmt_create <![CDATA[>=]]> #{minGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="maxGmtCreate != null">
+                and gmt_create <![CDATA[<=]]> #{maxGmtCreate,jdbcType=BIGINT}
+            </if>
+        </where>
+        order by id desc
+    </select>
+</mapper>

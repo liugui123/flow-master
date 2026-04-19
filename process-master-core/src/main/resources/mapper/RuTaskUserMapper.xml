@@ -1,0 +1,781 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lg.engine.core.db.mapper.RuTaskUserMapper">
+  <resultMap id="BaseResultMap" type="org.lg.engine.core.db.model.RuTaskUser">
+    <!--@mbg.generated-->
+    <!--@Table t_wf_ru_task_user-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="task_user_key" jdbcType="VARCHAR" property="userTaskKey" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
+    <result column="gmt_end" jdbcType="BIGINT" property="gmtEnd" />
+    <result column="assignee_id" jdbcType="VARCHAR" property="assigneeId" />
+    <result column="assignee_name" jdbcType="VARCHAR" property="assigneeName" />
+    <result column="assignee_dept_id" jdbcType="VARCHAR" property="assigneeDeptId" />
+    <result column="assignee_dept_name" jdbcType="VARCHAR" property="assigneeDeptName" />
+    <result column="assignee_org_id" jdbcType="VARCHAR" property="assigneeOrgId" />
+    <result column="assignee_org_name" jdbcType="VARCHAR" property="assigneeOrgName" />
+    <result column="assignee_mobile" jdbcType="VARCHAR" property="assigneeMobile" />
+    <result column="task_id" jdbcType="BIGINT" property="taskId" />
+    <result column="procinst_id" jdbcType="BIGINT" property="procinstId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+    <result column="task_desc" jdbcType="VARCHAR" property="taskDesc" />
+    <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="app_key" jdbcType="VARCHAR" property="appKey" />
+    <result column="proc_form_data_key" jdbcType="VARCHAR" property="procFormDataKey" />
+    <result column="proc_form_key" jdbcType="VARCHAR" property="procFormKey" />
+    <result column="biz_id" jdbcType="VARCHAR" property="bizId" />
+    <result column="proc_form_url" jdbcType="VARCHAR" property="procFormUrl" />
+    <result column="user_task_level" jdbcType="INTEGER" property="userTaskLevel" />
+    <result column="task_title" jdbcType="LONGVARCHAR" property="taskTitle" />
+    <result column="task_type" jdbcType="LONGVARCHAR" property="taskType" />
+    <result column="proc_form_url_app" jdbcType="VARCHAR" property="procFormUrlApp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, task_user_key, gmt_create, gmt_modified, gmt_end, assignee_id, assignee_name, 
+    assignee_dept_id, assignee_dept_name, assignee_org_id, assignee_org_name, assignee_mobile, 
+    task_id, procinst_id, `status`, flags, task_desc, `comment`, pid, app_key, proc_form_data_key, 
+    proc_form_key, biz_id, proc_form_url, user_task_level, task_title, task_type, proc_form_url_app
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_wf_ru_task_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_wf_ru_task_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.RuTaskUser" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_task_user (task_user_key, gmt_create, gmt_modified, 
+      gmt_end, assignee_id, assignee_name, 
+      assignee_dept_id, assignee_dept_name, assignee_org_id, 
+      assignee_org_name, assignee_mobile, task_id, 
+      procinst_id, `status`, flags, 
+      task_desc, `comment`, pid, 
+      app_key, proc_form_data_key, proc_form_key, 
+      biz_id, proc_form_url, user_task_level, 
+      task_title, task_type, proc_form_url_app
+      )
+    values (#{userTaskKey,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT},
+      #{gmtEnd,jdbcType=BIGINT}, #{assigneeId,jdbcType=VARCHAR}, #{assigneeName,jdbcType=VARCHAR}, 
+      #{assigneeDeptId,jdbcType=VARCHAR}, #{assigneeDeptName,jdbcType=VARCHAR}, #{assigneeOrgId,jdbcType=VARCHAR}, 
+      #{assigneeOrgName,jdbcType=VARCHAR}, #{assigneeMobile,jdbcType=VARCHAR}, #{taskId,jdbcType=BIGINT}, 
+      #{procinstId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{flags,jdbcType=INTEGER}, 
+      #{taskDesc,jdbcType=VARCHAR}, #{comment,jdbcType=LONGVARCHAR}, #{pid,jdbcType=BIGINT}, 
+      #{appKey,jdbcType=VARCHAR}, #{procFormDataKey,jdbcType=VARCHAR}, #{procFormKey,jdbcType=VARCHAR}, 
+      #{bizId,jdbcType=VARCHAR}, #{procFormUrl,jdbcType=VARCHAR}, #{userTaskLevel,jdbcType=INTEGER}, 
+      #{taskTitle,jdbcType=LONGVARCHAR}, #{taskType,jdbcType=LONGVARCHAR}, #{procFormUrlApp,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.lg.engine.core.db.model.RuTaskUser">
+    <!--@mbg.generated-->
+    update t_wf_ru_task_user
+    set task_user_key = #{userTaskKey,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      gmt_end = #{gmtEnd,jdbcType=BIGINT},
+      assignee_id = #{assigneeId,jdbcType=VARCHAR},
+      assignee_name = #{assigneeName,jdbcType=VARCHAR},
+      assignee_dept_id = #{assigneeDeptId,jdbcType=VARCHAR},
+      assignee_dept_name = #{assigneeDeptName,jdbcType=VARCHAR},
+      assignee_org_id = #{assigneeOrgId,jdbcType=VARCHAR},
+      assignee_org_name = #{assigneeOrgName,jdbcType=VARCHAR},
+      assignee_mobile = #{assigneeMobile,jdbcType=VARCHAR},
+      task_id = #{taskId,jdbcType=BIGINT},
+      procinst_id = #{procinstId,jdbcType=BIGINT},
+      `status` = #{status,jdbcType=INTEGER},
+      flags = #{flags,jdbcType=INTEGER},
+      task_desc = #{taskDesc,jdbcType=VARCHAR},
+      `comment` = #{comment,jdbcType=LONGVARCHAR},
+      pid = #{pid,jdbcType=BIGINT},
+      app_key = #{appKey,jdbcType=VARCHAR},
+      proc_form_data_key = #{procFormDataKey,jdbcType=VARCHAR},
+      proc_form_key = #{procFormKey,jdbcType=VARCHAR},
+      biz_id = #{bizId,jdbcType=VARCHAR},
+      proc_form_url = #{procFormUrl,jdbcType=VARCHAR},
+      user_task_level = #{userTaskLevel,jdbcType=INTEGER},
+      task_title = #{taskTitle,jdbcType=LONGVARCHAR},
+      task_type = #{taskType,jdbcType=LONGVARCHAR},
+      proc_form_url_app = #{procFormUrlApp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update t_wf_ru_task_user
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="task_user_key = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.userTaskKey,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="gmt_create = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.gmtCreate,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="gmt_modified = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.gmtModified,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="gmt_end = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.gmtEnd,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="assignee_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.assigneeId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="assignee_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.assigneeName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="assignee_dept_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.assigneeDeptId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="assignee_dept_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.assigneeDeptName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="assignee_org_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.assigneeOrgId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="assignee_org_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.assigneeOrgName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="assignee_mobile = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.assigneeMobile,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="task_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.taskId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="procinst_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procinstId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="flags = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.flags,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="task_desc = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.taskDesc,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`comment` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.comment,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="pid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.pid,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="app_key = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.appKey,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="proc_form_data_key = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procFormDataKey,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="proc_form_key = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procFormKey,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="biz_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.bizId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="proc_form_url = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procFormUrl,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="user_task_level = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.userTaskLevel,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="task_title = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.taskTitle,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="task_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.taskType,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="proc_form_url_app = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procFormUrlApp,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_task_user
+    (task_user_key, gmt_create, gmt_modified, gmt_end, assignee_id, assignee_name, assignee_dept_id, 
+      assignee_dept_name, assignee_org_id, assignee_org_name, assignee_mobile, task_id, 
+      procinst_id, `status`, flags, task_desc, `comment`, pid, app_key, proc_form_data_key, 
+      proc_form_key, biz_id, proc_form_url, user_task_level, task_title, task_type, proc_form_url_app
+      )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userTaskKey,jdbcType=VARCHAR}, #{item.gmtCreate,jdbcType=BIGINT}, #{item.gmtModified,jdbcType=BIGINT},
+        #{item.gmtEnd,jdbcType=BIGINT}, #{item.assigneeId,jdbcType=VARCHAR}, #{item.assigneeName,jdbcType=VARCHAR}, 
+        #{item.assigneeDeptId,jdbcType=VARCHAR}, #{item.assigneeDeptName,jdbcType=VARCHAR}, 
+        #{item.assigneeOrgId,jdbcType=VARCHAR}, #{item.assigneeOrgName,jdbcType=VARCHAR}, 
+        #{item.assigneeMobile,jdbcType=VARCHAR}, #{item.taskId,jdbcType=BIGINT}, #{item.procinstId,jdbcType=BIGINT}, 
+        #{item.status,jdbcType=INTEGER}, #{item.flags,jdbcType=INTEGER}, #{item.taskDesc,jdbcType=VARCHAR}, 
+        #{item.comment,jdbcType=LONGVARCHAR}, #{item.pid,jdbcType=BIGINT}, #{item.appKey,jdbcType=VARCHAR}, 
+        #{item.procFormDataKey,jdbcType=VARCHAR}, #{item.procFormKey,jdbcType=VARCHAR}, 
+        #{item.bizId,jdbcType=VARCHAR}, #{item.procFormUrl,jdbcType=VARCHAR}, #{item.userTaskLevel,jdbcType=INTEGER}, 
+        #{item.taskTitle,jdbcType=LONGVARCHAR}, #{item.taskType,jdbcType=LONGVARCHAR}, 
+        #{item.procFormUrlApp,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+
+    <resultMap id="CoordinateHandlerMap" type="org.lg.engine.core.db.model.CoordinateHandler">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="assignee_id" jdbcType="VARCHAR" property="assigneeId" />
+        <result column="pid" jdbcType="BIGINT" property="pid" />
+        <result column="flags" jdbcType="INTEGER" property="flags" />
+    </resultMap>
+
+    <resultMap id="AssigneeOrgAndDeptMap" type="org.lg.engine.core.db.model.AssigneeOrgAndDept">
+        <result column="assignee_dept_id" jdbcType="VARCHAR" property="assigneeDeptId" />
+        <result column="assignee_org_id" jdbcType="VARCHAR" property="assigneeOrgId" />
+        <result column="task_user_key" jdbcType="VARCHAR" property="userTaskKey" />
+        <result column="assignee_id" jdbcType="VARCHAR" property="assigneeId" />
+    </resultMap>
+    <!--auto generated by MybatisCodeHelper on 2021-05-12-->
+    <delete id="deleteByUserIdAndTaskId">
+        delete
+        from t_wf_ru_task_user
+        where assignee_id = #{userId,jdbcType=VARCHAR}
+        and task_id = #{taskId,jdbcType=BIGINT}
+    </delete>
+    <!--auto generated by MybatisCodeHelper on 2021-05-12-->
+    <select id="selectTaskIdByUserId" resultType="java.lang.Long">
+        select task_id
+        from t_wf_ru_task_user
+        where assignee_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-05-17-->
+    <select id="selectByProcInstId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_task_user
+        where procinst_id = #{procinstId,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-05-17-->
+    <select id="selectByProcInstIdAndTaskId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_task_user
+        where procinst_id = #{procinstId,jdbcType=BIGINT}
+        and task_id = #{taskId,jdbcType=BIGINT}
+    </select>
+    <update id="upTaskUserFlags">
+        update t_wf_ru_task_user
+        set flags = #{status,jdbcType=INTEGER}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <!--auto generated by MybatisCodeHelper on 2021-05-19-->
+    <delete id="deleteByProcInstId">
+        delete
+        from t_wf_ru_task_user
+        where procinst_id = #{procinstId,jdbcType=BIGINT}
+    </delete>
+    <select id="findListByTaskId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_task_user where task_id in
+        <foreach close=")" collection="taskIdList" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-05-26-->
+    <select id="countIdByTaskId" resultType="java.lang.Long">
+        select count(id)
+        from t_wf_ru_task_user
+        where task_id = #{taskId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByTaskId">
+        delete
+        from t_wf_ru_task_user
+        where task_id = #{taskId,jdbcType=BIGINT}
+    </delete>
+    <!--auto generated by MybatisCodeHelper on 2021-05-27-->
+    <select id="selectByTaskId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_task_user
+        where task_id = #{taskId,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-06-04-->
+    <select id="selectIdByParentTaskUserId" resultType="java.lang.Long">
+        select id
+        from t_wf_ru_task_user
+        where pid = #{pid,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-06-16-->
+    <select id="selectIdByAssigneeIdAndTaskId" resultType="java.lang.Long">
+        select id
+        from t_wf_ru_task_user
+        where assignee_id = #{assigneeId,jdbcType=VARCHAR}
+        and task_id = #{taskId,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-06-16-->
+    <update id="updateStatusByTaskIdAndAssigneeId">
+        update t_wf_ru_task_user
+        set `status`=#{updatedStatus,jdbcType=INTEGER}
+        where task_id = #{taskId,jdbcType=BIGINT}
+        and assignee_id = #{assigneeId,jdbcType=VARCHAR}
+    </update>
+    <!--auto generated by MybatisCodeHelper on 2021-06-16-->
+    <!--auto generated by MybatisCodeHelper on 2021-06-24-->
+    <select id="selectAssigneeIdByTaskId" resultType="java.lang.String">
+        select assignee_id
+        from t_wf_ru_task_user
+        where task_id = #{taskId,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-06-29-->
+    <!--auto generated by MybatisCodeHelper on 2021-07-01-->
+    <select id="selectAssigneeNameByTaskIdIn" resultType="java.lang.String">
+        select assignee_name
+        from t_wf_ru_task_user
+        where task_id in
+        <foreach close=")" collection="taskIdCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-07-05-->
+    <select id="selectIdByTaskId" resultType="java.lang.Long">
+        select id
+        from t_wf_ru_task_user
+        where task_id = #{taskId,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-07-05-->
+    <!--auto generated by MybatisCodeHelper on 2021-07-05-->
+    <select id="selectAssigneeNameByTaskId" resultType="java.lang.String">
+        select assignee_name
+        from t_wf_ru_task_user
+        where task_id = #{taskId,jdbcType=BIGINT}
+    </select>
+    <select id="selectByAssigneeIdAndHasFlags" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_hi_ru_task_user
+        where assignee_id = #{assigneeId,jdbcType=VARCHAR}
+        and flags <![CDATA[&]]> #{flags,jdbcType=INTEGER} != 0
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-07-07-->
+    <select id="selectByProcinstIdIn" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_task_user
+        where procinst_id in
+        <foreach close=")" collection="procinstIdCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-07-08-->
+    <select id="selectByAssigneeIdAndPidIsNullAndStatusOrderByGmtCreateDesc" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_task_user
+        where assignee_id = #{assigneeId,jdbcType=VARCHAR}
+        and pid is null
+        and `status` = #{status,jdbcType=INTEGER}
+        order by gmt_create desc
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-07-19-->
+    <select id="selectFirstByAssigneeIdAndTaskId" resultMap="BaseResultMap">
+        select *
+        from t_wf_ru_task_user
+        where assignee_id = #{assigneeId,jdbcType=VARCHAR}
+        and task_id = #{taskId,jdbcType=BIGINT} limit 1
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-03-->
+    <select id="selectByTaskIdOrderByIdAsc" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_task_user
+        where task_id = #{taskId,jdbcType=BIGINT}
+        order by id asc
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-04-->
+    <select id="selectByAssigneeIdAndTaskId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_task_user
+        where `assignee_id` = #{assigneeId,jdbcType=VARCHAR}
+        and `task_id` = #{taskId,jdbcType=BIGINT}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-17-->
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-18-->
+    <select id="selectByPid" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_task_user
+        where `pid` = #{pid,jdbcType=BIGINT}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-18-->
+    <select id="selectIdByPid" resultType="java.lang.Long">
+        select `id`
+        from t_wf_ru_task_user
+        where `pid` = #{pid,jdbcType=BIGINT}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-19-->
+    <update id="updatePidById">
+        update t_wf_ru_task_user
+        set `pid`=#{updatedPid,jdbcType=BIGINT}
+        where `id` = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-19-->
+    <delete id="deleteByIdIn">
+        delete
+        from t_wf_ru_task_user
+        where `id` in
+        <foreach close=")" collection="idCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </delete>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-19-->
+    <select id="countByPid" resultType="java.lang.Long">
+        select count(1)
+        from t_wf_ru_task_user
+        where `pid` = #{pid,jdbcType=BIGINT}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-10-07-->
+    <select id="selectByUserTaskLevelNotNull" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_task_user
+        where user_task_level is not null
+        limit #{startRow}, #{pageSize}
+    </select>
+
+    <select id="selectByTaskIdWithFiltersOrderByIdAsc" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_task_user
+        where task_id=#{taskId,jdbcType=BIGINT}
+        <if test="assigneeIds != null and assigneeIds.size() &gt; 0">
+            and assignee_id in
+            <foreach close=")" collection="assigneeIds" item="item" open="(" separator=",">
+                #{item}
+            </foreach>
+        </if>
+        <if test="commentNotBlank != null and commentNotBlank">
+            and comment is not null
+        </if>
+        order by id asc
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-09-10-->
+    <select id="pagePendingUserTasks" resultMap="BaseResultMap">
+        select a.id,
+        a.task_user_key,
+        a.gmt_create,
+        a.gmt_modified,
+        a.gmt_end,
+        a.assignee_id,
+        a.assignee_name,
+        a.assignee_dept_id,
+        a.assignee_dept_name,
+        a.assignee_org_id,
+        a.assignee_org_name,
+        a.task_id,
+        a.procinst_id,
+        a.`status`,
+        a.flags,
+        a.task_desc,
+        a.`comment`,
+        a.pid,
+        a.app_key,
+        a.proc_form_data_key,
+        a.proc_form_key,
+        a.biz_id,
+        a.proc_form_url,
+        a.proc_form_url_app
+        from t_wf_ru_task_user a
+        where a.assignee_id = #{assigneeId,jdbcType=VARCHAR}
+        and a.assignee_org_id = #{assigneeOrgId,jdbcType=VARCHAR}
+        and not exists(select b.id from t_wf_ru_task_user b where b.pid = a.id)
+        <if test="procinstIds != null and procinstIds.size() != 0">
+            and a.procinst_id in
+            <foreach close=")" collection="procinstIds" item="procinstId" open="(" separator=",">
+                #{procinstId,jdbcType=BIGINT}
+            </foreach>
+        </if>
+        <if test="taskIds != null and taskIds.size() != 0">
+            and a.task_id in
+            <foreach close=")" collection="taskIds" item="taskId" open="(" separator=",">
+                #{taskId,jdbcType=BIGINT}
+            </foreach>
+        </if>
+
+        <if test="minGmtCreate != null and maxGmtCreate != null">
+            and (a.gmt_create between #{minGmtCreate,jdbcType=BIGINT} and #{maxGmtCreate,jdbcType=BIGINT})
+        </if>
+
+        order by a.id desc
+        limit #{startRow,jdbcType=BIGINT}, #{pageSize,jdbcType=BIGINT}
+
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-09-10-->
+    <select id="countPagePendingUserTasks" resultType="java.lang.Integer">
+        select  count(*)
+        from t_wf_ru_task_user a
+        where a.assignee_id = #{assigneeId,jdbcType=VARCHAR}
+        and a.assignee_org_id = #{assigneeOrgId,jdbcType=VARCHAR}
+        and not exists(select b.id from t_wf_ru_task_user b where b.pid = a.id)
+        <if test="procinstIds != null and procinstIds.size() != 0">
+            and a.procinst_id in
+            <foreach close=")" collection="procinstIds" item="procinstId" open="(" separator=",">
+                #{procinstId,jdbcType=BIGINT}
+            </foreach>
+        </if>
+        <if test="taskIds != null and taskIds.size() != 0">
+            and a.task_id in
+            <foreach close=")" collection="taskIds" item="taskId" open="(" separator=",">
+                #{taskId,jdbcType=BIGINT}
+            </foreach>
+        </if>
+        <if test="minGmtCreate != null and maxGmtCreate != null">
+            and (a.gmt_create between #{minGmtCreate,jdbcType=BIGINT} and #{maxGmtCreate,jdbcType=BIGINT})
+        </if>
+    </select>
+
+    <select id="selectAssigneeOrgAndDeptByTaskIdsAndSpecialFlags" resultMap="AssigneeOrgAndDeptMap">
+        select assignee_dept_id, assignee_org_id, task_user_key, assignee_id
+        from t_wf_ru_task_user
+        where task_id in
+        <foreach close=")" collection="taskIds" item="taskId" open="(" separator=",">
+            #{taskId,jdbcType=BIGINT}
+        </foreach>
+        and <![CDATA[
+         (
+         (flags & 4 = 0 and (flags & 64 = 64 or flags & 1024 = 1024))
+         or (flags & 4 = 4 and  flags & 1024 = 1024)
+         )
+         ]]>
+        and  <![CDATA[ flags & 16 = 0 and flags & 32 = 0]]>
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-11-10-->
+    <select id="selectFirstIdByTaskUserKey" resultType="java.lang.Long">
+        select id
+        from t_wf_ru_task_user
+        where task_user_key=#{userTaskKey,jdbcType=VARCHAR} limit 1
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-12-14-->
+  <select id="selectfirstByTaskUserKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_wf_ru_task_user
+        where task_user_key=#{userTaskKey,jdbcType=VARCHAR} limit 1
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-12-24-->
+  <select id="selectByTaskIdIn" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_wf_ru_task_user
+        where task_id in
+        <foreach item="item" index="index" collection="taskIdCollection"
+                 open="(" separator="," close=")">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2022-01-26-->
+    <select id="countByTaskIdInAndStatusNot" resultType="java.lang.Long">
+        select count(1)
+        from t_wf_ru_task_user
+        where task_id in
+        <foreach item="item" index="index" collection="taskIdCollection"
+                 open="(" separator="," close=")">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+        and `status` <![CDATA[<>]]> #{notStatus,jdbcType=INTEGER}
+    </select>
+  <!--auto generated by MybatisCodeHelper on 2021-12-14-->
+  <select id="selectByTaskIdsAndStatusAndUserTaskLevelWithFlags" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from t_wf_ru_task_user
+    where task_id in
+    <foreach item="item" index="index" collection="taskIds"
+      open="(" separator="," close=")">
+      #{item,jdbcType=BIGINT}
+    </foreach>
+    and `status` = #{status,jdbcType=INTEGER}
+    <if test="userTaskLevel != null">
+      and user_task_level = #{userTaskLevel,jdbcType=INTEGER}
+    </if>
+    <if test="userTaskLevel == null">
+      and user_task_level is null
+    </if>
+    <if test="flagList != null  and flagList.size() > 0 ">
+      and
+      <foreach item="item" index="index" collection="flagList"
+        open="(" separator="or" close=")">
+        <![CDATA[flags & #{item} = #{item}]]>
+      </foreach>
+    </if>
+    <if test="notFlagList != null  and notFlagList.size() > 0 ">
+      and
+      <foreach item="item" index="index" collection="notFlagList"
+        open="(" separator="and" close=")">
+        <![CDATA[flags & #{item} = 0]]>
+      </foreach>
+    </if>
+  </select>
+
+  <select id="selectByIdInAndStatus" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from t_wf_ru_task_user
+    where id in
+    <foreach item="item" index="index" collection="ids"
+      open="(" separator="," close=")">
+      #{item,jdbcType=BIGINT}
+    </foreach>
+    and `status` = #{status,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByTaskIdInWithLimit" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from t_wf_ru_task_user
+    where task_id in
+    <foreach item="item" index="index" collection="taskIdCollection"
+      open="(" separator="," close=")">
+      #{item,jdbcType=BIGINT}
+    </foreach>
+    limit ${limitValue}
+  </select>
+
+  <select id="selectByTaskIdsAndAssigneeIds" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from t_wf_ru_task_user
+    where task_id in
+    <foreach item="item" index="index" collection="taskIds"
+      open="(" separator="," close=")">
+      #{item,jdbcType=BIGINT}
+    </foreach>
+    and assignee_id in
+    <foreach item="item" index="index" collection="assigneeIds"
+      open="(" separator="," close=")">
+      #{item,jdbcType=VARCHAR}
+    </foreach>
+  </select>
+
+  <select id="selectByProcinstIdAndAssigneeId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from t_wf_ru_task_user
+    where procinst_id = #{procinstId,jdbcType=BIGINT}
+    and assignee_id =  #{assigneeId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectCoordinateHandlerByTaskIdIn" resultMap="CoordinateHandlerMap">
+    select id, assignee_id, pid, flags
+    from t_wf_ru_task_user
+    where task_id in
+    <foreach item="item" index="index" collection="taskIdCollection"
+      open="(" separator="," close=")">
+      #{item,jdbcType=BIGINT}
+    </foreach>
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2022-05-18-->
+  <select id="selectFirstProcinstIdByTaskUserKey" resultType="java.lang.Long">
+        select procinst_id
+        from t_wf_ru_task_user
+        where task_user_key=#{userTaskKey,jdbcType=VARCHAR} limit 1
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2022-08-30-->
+  <select id="selectByTaskIdInAndStatus" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_wf_ru_task_user
+        where task_id in
+        <foreach item="item" index="index" collection="taskIdCollection"
+                 open="(" separator="," close=")">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+        and `status`=#{status,jdbcType=INTEGER}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2024-03-12-->
+  <select id="selectFirstTaskIdById" resultType="java.lang.Long">
+        select task_id
+        from t_wf_ru_task_user
+        where id=#{id,jdbcType=BIGINT} limit 1
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2024-03-12-->
+  <select id="selectFirstTaskIdByUserTaskKey" resultType="java.lang.Long">
+        select task_id
+        from t_wf_ru_task_user
+        where task_user_key=#{userTaskKey,jdbcType=VARCHAR} limit 1
+    </select>
+</mapper>

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shinemo.baas.baas.wf.portal.mapper.AppDetailMapper">
+
+    <resultMap type="com.shinemo.baas.baas.wf.portal.model.domain.AppDetailDO" id="BaseResultMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+        <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="flags" column="flags" jdbcType="INTEGER"/>
+        <result property="detailKey" column="detail_key" jdbcType="VARCHAR"/>
+        <result property="detailName" column="detail_name" jdbcType="VARCHAR"/>
+        <result property="pid" column="pid" jdbcType="INTEGER"/>
+        <result property="appId" column="app_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        `id`,
+        `gmt_create`,
+        `gmt_modified`,
+        `status`,
+        `flags`,
+        `detail_key`,
+        `detail_name`,
+        `pid`,
+        `app_id`
+    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select id,
+        gmt_create,
+        gmt_modified,
+        status,
+        flags,
+        detail_key,
+        detail_name,
+        pid,
+        app_id
+        from t_wf_app_detail
+        where id = #{id}
+        AND status=0
+    </select>
+
+    <!--    <select id="queryAllByLimit" resultMap="BaseResultMap">-->
+    <!--        select id,-->
+    <!--               gmt_create,-->
+    <!--               gmt_modified,-->
+    <!--               status,-->
+    <!--               flags,-->
+    <!--               detail_key,-->
+    <!--               detail_name,-->
+    <!--               pid,-->
+    <!--               app_id-->
+    <!--        from  t_wf_app_detail-->
+    <!--        limit #{offset}, #{limit}-->
+    <!--    </select>-->
+
+    <!--通过实体作为筛选条件查询-->
+    <!--    <select id="queryAll" resultMap="BaseResultMap">-->
+    <!--        select-->
+    <!--        id, gmt_create, gmt_modified, status, flags, detail_key, detail_name, pid, app_id-->
+    <!--        from  t_wf_app_detail-->
+    <!--        <where>-->
+    <!--            <if test="id != null">-->
+    <!--                and id = #{id}-->
+    <!--            </if>-->
+    <!--            <if test="gmtCreate != null">-->
+    <!--                and gmt_create = #{gmtCreate}-->
+    <!--            </if>-->
+    <!--            <if test="gmtModified != null">-->
+    <!--                and gmt_modified = #{gmtModified}-->
+    <!--            </if>-->
+    <!--            <if test="status != null">-->
+    <!--                and status = #{status}-->
+    <!--            </if>-->
+    <!--            <if test="flags != null">-->
+    <!--                and flags = #{flags}-->
+    <!--            </if>-->
+    <!--            <if test="detailKey != null and detailKey != ''">-->
+    <!--                and detail_key = #{detailKey}-->
+    <!--            </if>-->
+    <!--            <if test="detailName != null and detailName != ''">-->
+    <!--                and detail_name = #{detailName}-->
+    <!--            </if>-->
+    <!--            <if test="pid != null">-->
+    <!--                and pid = #{pid}-->
+    <!--            </if>-->
+    <!--            <if test="appId != null">-->
+    <!--                and app_id = #{appId}-->
+    <!--            </if>-->
+    <!--        </where>-->
+    <!--    </select>-->
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into t_wf_app_detail(gmt_create, gmt_modified, status, flags, detail_key, detail_name, pid,
+        app_id)
+        values (#{gmtCreate}, #{gmtModified}, #{status}, #{flags}, #{detailKey}, #{detailName}, #{pid}, #{appId})
+    </insert>
+
+    <!--    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">-->
+    <!--        insert into  t_wf_app_detail(gmt_create, gmt_modified, status, flags, detail_key, detail_name, pid,-->
+    <!--        app_id)-->
+    <!--        values-->
+    <!--        <foreach collection="entities" item="entity" separator=",">-->
+    <!--            (#{entity.gmtCreate}, #{entity.gmtModified}, #{entity.status}, #{entity.flags}, #{entity.detailKey},-->
+    <!--            #{entity.detailName}, #{entity.pid}, #{entity.appId})-->
+    <!--        </foreach>-->
+    <!--    </insert>-->
+    <!--    -->
+    <!--通过主键修改数据-->
+    <update id="update">
+        update t_wf_app_detail
+        <set>
+            <if test="gmtCreate != null">
+                gmt_create = #{gmtCreate},
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified = #{gmtModified},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="flags != null">
+                flags = #{flags},
+            </if>
+            <if test="detailKey != null and detailKey != ''">
+                detail_key = #{detailKey},
+            </if>
+            <if test="detailName != null and detailName != ''">
+                detail_name = #{detailName},
+            </if>
+            <if test="pid != null">
+                pid = #{pid},
+            </if>
+            <if test="appId != null">
+                app_id = #{appId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过应用主键删除应用下所有分组-->
+    <update id="deleteByAppId">
+        update t_wf_app_detail
+        set status=1
+        where app_id = #{appId}
+    </update>
+    <!--通过父节点查找所有子节点-->
+    <select id="selectAllByPid" resultType="com.shinemo.baas.baas.wf.portal.model.domain.AppDetailDO"
+            parameterType="java.lang.Long">
+        select id,
+        gmt_create,
+        gmt_modified,
+        status,
+        flags,
+        detail_key,
+        detail_name,
+        pid,
+        app_id
+        from t_wf_app_detail
+        where pid=#{pid};
+    </select>
+
+    <select id="selectUnpublishedByAppId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select id,
+        gmt_create,
+        gmt_modified,
+        status,
+        flags,
+        detail_key,
+        detail_name,
+        pid,
+        app_id
+        from t_wf_app_detail
+        where (flags =4 or flags=9 or flags=17)
+        AND app_id=#{appId}
+        AND status=0
+    </select>
+    <select id="selectPublishedByAppId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select id,
+        gmt_create,
+        gmt_modified,
+        status,
+        flags,
+        detail_key,
+        detail_name,
+        pid,
+        app_id
+        from t_wf_app_detail
+        where (flags =4 or flags=10 or flags=18)
+        AND app_id=#{appId}
+        AND status=0
+    </select>
+
+    <insert id="insertDetail" keyProperty="id" useGeneratedKeys="true">
+        insert into t_wf_app_detail(gmt_create, gmt_modified,status,flags,detail_key,detail_name,pid,app_id)
+        values (#{gmtCreate}, #{gmtModified}, #{status}, #{flags}, #{detailKey}, #{detailName}, #{pid}, #{appId})
+    </insert>
+
+    <select id="selectIdByDetailKey" resultType="java.lang.Long">
+        select id
+        from t_wf_app_detail
+        where detail_key=#{detailKey}
+        AND status=0
+    </select>
+
+    <select id="selectFormByPid" resultType="com.shinemo.baas.baas.wf.portal.model.domain.AppDetailDO"
+            parameterType="java.lang.Long">
+        select id,
+        gmt_create,
+        gmt_modified,
+        status,
+        flags,
+        detail_key,
+        detail_name,
+        pid,
+        app_id
+        from t_wf_app_detail
+        where pid=#{pid}
+        and status=0
+    </select>
+
+    <!--通过key删除分组或表单-->
+    <update id="deleteDetailByKey" parameterType="String">
+        update t_wf_app_detail
+        set status=1
+        where detail_key=#{detailKey}
+    </update>
+
+    <!--   通过key查询实体-->
+    <select id="queryByKey" resultMap="BaseResultMap">
+        select id,
+        gmt_create,
+        gmt_modified,
+        status,
+        flags,
+        detail_key,
+        detail_name,
+        pid,
+        app_id
+        from t_wf_app_detail
+        where detail_key = #{detailKey}
+        and status=0
+    </select>
+
+    <!--    通过Pid查询分组下所有页面-->
+    <select id="queryListByPid" resultMap="BaseResultMap">
+        select id,
+        gmt_create,
+        gmt_modified,
+        status,
+        flags,
+        detail_key,
+        detail_name,
+        pid,
+        app_id
+        from t_wf_app_detail
+        where pid = #{pid}
+        and status=0
+    </select>
+
+    <update id="deleteDetailById" parameterType="java.lang.Long">
+        update t_wf_app_detail
+        set status=1
+        where id=#{id}
+    </update>
+
+    <select id="queryGroupByAppId" resultMap="BaseResultMap">
+        select id,
+        gmt_create,
+        gmt_modified,
+        status,
+        flags,
+        detail_key,
+        detail_name,
+        pid,
+        app_id
+        from t_wf_app_detail
+        where app_id=#{appId}
+        AND flags=4
+        AND status=0
+        AND pid=-1
+    </select>
+
+    <select id="queryDraftDetailListByGroup"
+            resultMap="BaseResultMap">
+        select *
+        from t_wf_app_detail
+        where pid=#{pid}
+        AND (flags=4 OR flags=9 OR flags=17)
+        AND status=0
+    </select>
+
+    <select id="queryDraftDetailListByAppId"
+            resultMap="BaseResultMap">
+        select *
+        from t_wf_app_detail
+        where app_id=#{appId}
+        AND (flags=4 OR flags=9 OR flags=17)
+        AND status=0
+    </select>
+
+
+    <select id="queryPublishedDetailListByAppId"
+            resultMap="BaseResultMap">
+        select *
+        from t_wf_app_detail
+        where app_id=#{appId}
+        AND (flags=4 OR flags=10 OR flags=18)
+        AND status=0
+    </select>
+
+    <select id="queryPublishedDetailListByGroup"
+            resultMap="BaseResultMap">
+        select *
+        from t_wf_app_detail
+        where pid=#{pid}
+        AND (flags=4 OR flags=10 OR flags=18)
+        AND status=0
+    </select>
+
+    <select id="selectByPid" resultMap="BaseResultMap">
+        select
+        detail_key,detail_name
+        from t_wf_app_detail
+        where `pid`=#{pid,jdbcType=INTEGER}
+        AND status=0
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-07-12-->
+    <select id="selectByAppId" resultMap="BaseResultMap">
+        select *
+        from t_wf_app_detail
+        where `app_id`=#{appId,jdbcType=INTEGER}
+        AND status=0
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        select
+        id,
+        detail_key,
+        detail_name,
+        pid,
+        flags,
+        app_id
+        from t_wf_app_detail
+        where id=#{id}
+        AND status=0
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-07-20-->
+    <select id="queryAllByAppId" resultMap="BaseResultMap">
+        select *
+        from t_wf_app_detail
+        where `app_id`=#{appId,jdbcType=INTEGER}
+        AND status=0
+    </select>
+</mapper>

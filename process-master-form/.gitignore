@@ -1,0 +1,7 @@
+# Project exclude paths
+/.gradle/
+/build/
+/build/classes/java/main/
+/process-master-form-client/target/
+/target/
+/.idea/

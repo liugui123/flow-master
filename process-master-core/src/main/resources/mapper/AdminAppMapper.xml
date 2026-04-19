@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lg.engine.core.db.mapper.AdminAppMapper">
+  <resultMap id="BaseResultMap" type="org.lg.engine.core.db.model.AdminApp">
+    <!--@mbg.generated-->
+    <!--@Table t_wf_admin_app-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
+    <result column="app_name" jdbcType="VARCHAR" property="appName" />
+    <result column="app_desc" jdbcType="VARCHAR" property="appDesc" />
+    <result column="app_icon" jdbcType="LONGVARCHAR" property="appIcon" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+    <result column="creator_id" jdbcType="VARCHAR" property="creatorId" />
+    <result column="creator_name" jdbcType="VARCHAR" property="creatorName" />
+    <result column="creator_dept_id" jdbcType="VARCHAR" property="creatorDeptId" />
+    <result column="creator_dept_name" jdbcType="VARCHAR" property="creatorDeptName" />
+    <result column="creator_org_id" jdbcType="VARCHAR" property="creatorOrgId" />
+    <result column="creator_org_name" jdbcType="VARCHAR" property="creatorOrgName" />
+    <result column="app_key" jdbcType="VARCHAR" property="appKey" />
+    <result column="sort_score" jdbcType="INTEGER" property="sortScore" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modified, app_name, app_desc, app_icon, `status`, flags, creator_id, 
+    creator_name, creator_dept_id, creator_dept_name, creator_org_id, creator_org_name, 
+    app_key, sort_score
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_wf_admin_app
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_wf_admin_app
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.AdminApp" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_admin_app (gmt_create, gmt_modified, app_name, 
+      app_desc, app_icon, `status`, 
+      flags, creator_id, creator_name, 
+      creator_dept_id, creator_dept_name, creator_org_id, 
+      creator_org_name, app_key, sort_score)
+    values (#{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}, #{appName,jdbcType=VARCHAR}, 
+      #{appDesc,jdbcType=VARCHAR}, #{appIcon,jdbcType=LONGVARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{flags,jdbcType=INTEGER}, #{creatorId,jdbcType=VARCHAR}, #{creatorName,jdbcType=VARCHAR}, 
+      #{creatorDeptId,jdbcType=VARCHAR}, #{creatorDeptName,jdbcType=VARCHAR}, #{creatorOrgId,jdbcType=VARCHAR}, 
+      #{creatorOrgName,jdbcType=VARCHAR}, #{appKey,jdbcType=VARCHAR},  #{sortScore,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.lg.engine.core.db.model.AdminApp">
+    <!--@mbg.generated-->
+    update t_wf_admin_app
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      app_name = #{appName,jdbcType=VARCHAR},
+      app_desc = #{appDesc,jdbcType=VARCHAR},
+      app_icon = #{appIcon,jdbcType=LONGVARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      flags = #{flags,jdbcType=INTEGER},
+      creator_id = #{creatorId,jdbcType=VARCHAR},
+      creator_name = #{creatorName,jdbcType=VARCHAR},
+      creator_dept_id = #{creatorDeptId,jdbcType=VARCHAR},
+      creator_dept_name = #{creatorDeptName,jdbcType=VARCHAR},
+      creator_org_id = #{creatorOrgId,jdbcType=VARCHAR},
+      creator_org_name = #{creatorOrgName,jdbcType=VARCHAR},
+      app_key = #{appKey,jdbcType=VARCHAR},
+      sort_score =  #{sortScore,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_admin_app
+    (gmt_create, gmt_modified, app_name, app_desc, app_icon, `status`, flags, creator_id, 
+      creator_name, creator_dept_id, creator_dept_name, creator_org_id, creator_org_name, 
+      app_key,sort_score)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.gmtCreate,jdbcType=BIGINT}, #{item.gmtModified,jdbcType=BIGINT}, #{item.appName,jdbcType=VARCHAR}, 
+        #{item.appDesc,jdbcType=VARCHAR}, #{item.appIcon,jdbcType=LONGVARCHAR}, #{item.status,jdbcType=INTEGER}, 
+        #{item.flags,jdbcType=INTEGER}, #{item.creatorId,jdbcType=VARCHAR}, #{item.creatorName,jdbcType=VARCHAR}, 
+        #{item.creatorDeptId,jdbcType=VARCHAR}, #{item.creatorDeptName,jdbcType=VARCHAR}, 
+        #{item.creatorOrgId,jdbcType=VARCHAR}, #{item.creatorOrgName,jdbcType=VARCHAR}, 
+        #{item.appKey,jdbcType=VARCHAR},#{item.sortScore,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+
+    <!--auto generated by MybatisCodeHelper on 2021-07-25-->
+    <select id="selectByCreatorIdAndCreatorOrgId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_admin_app
+        where creator_id=#{creatorId,jdbcType=VARCHAR} and creator_org_id=#{creatorOrgId,jdbcType=VARCHAR}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-11-10-->
+  <select id="selectFirstIdByAppKey" resultType="java.lang.Long">
+    select id
+    from t_wf_admin_app
+    where app_key=#{appKey,jdbcType=VARCHAR} limit 1
+  </select>
+
+  <select id="selectFirstByAppKey" resultMap="BaseResultMap">
+    select id, app_name, app_desc, app_icon,app_key
+    from t_wf_admin_app
+    where app_key=#{appKey,jdbcType=VARCHAR} limit 1
+  </select>
+
+  <update id="updateSortScore" >
+    <!--@mbg.generated-->
+    update t_wf_admin_app
+    set sort_score =  #{sortScore,jdbcType=INTEGER},
+    gmt_modified = #{gmtModified,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+</mapper>

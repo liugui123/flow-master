@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lg.upone.form.db.mapper.UponeDeFormMapper">
+  <resultMap id="BaseResultMap" type="org.lg.upone.form.db.model.UponeDeForm">
+    <!--@mbg.generated-->
+    <!--@Table t_upone_de_form-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+    <result column="form_json" jdbcType="LONGVARCHAR" property="formJson" />
+    <result column="form_version" jdbcType="INTEGER" property="formVersion" />
+    <result column="form_key" jdbcType="VARCHAR" property="formKey" />
+    <result column="form_name" jdbcType="VARCHAR" property="formName" />
+    <result column="app_key" jdbcType="VARCHAR" property="appKey" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modified, `status`, flags, form_json, form_version, form_key, 
+    form_name, app_key
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_upone_de_form
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_upone_de_form
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.lg.upone.form.db.model.UponeDeForm" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_upone_de_form (gmt_create, gmt_modified, `status`, 
+      flags, form_json, form_version, 
+      form_key, form_name, app_key
+      )
+    values (#{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, 
+      #{flags,jdbcType=INTEGER}, #{formJson,jdbcType=LONGVARCHAR}, #{formVersion,jdbcType=INTEGER}, 
+      #{formKey,jdbcType=VARCHAR}, #{formName,jdbcType=VARCHAR}, #{appKey,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.lg.upone.form.db.model.UponeDeForm" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_upone_de_form
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="flags != null">
+        flags,
+      </if>
+      <if test="formJson != null">
+        form_json,
+      </if>
+      <if test="formVersion != null">
+        form_version,
+      </if>
+      <if test="formKey != null">
+        form_key,
+      </if>
+      <if test="formName != null">
+        form_name,
+      </if>
+      <if test="appKey != null">
+        app_key,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="flags != null">
+        #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="formJson != null">
+        #{formJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="formVersion != null">
+        #{formVersion,jdbcType=INTEGER},
+      </if>
+      <if test="formKey != null">
+        #{formKey,jdbcType=VARCHAR},
+      </if>
+      <if test="formName != null">
+        #{formName,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null">
+        #{appKey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lg.upone.form.db.model.UponeDeForm">
+    <!--@mbg.generated-->
+    update t_upone_de_form
+    <set>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="flags != null">
+        flags = #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="formJson != null">
+        form_json = #{formJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="formVersion != null">
+        form_version = #{formVersion,jdbcType=INTEGER},
+      </if>
+      <if test="formKey != null">
+        form_key = #{formKey,jdbcType=VARCHAR},
+      </if>
+      <if test="formName != null">
+        form_name = #{formName,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null">
+        app_key = #{appKey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lg.upone.form.db.model.UponeDeForm">
+    <!--@mbg.generated-->
+    update t_upone_de_form
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      `status` = #{status,jdbcType=INTEGER},
+      flags = #{flags,jdbcType=INTEGER},
+      form_json = #{formJson,jdbcType=LONGVARCHAR},
+      form_version = #{formVersion,jdbcType=INTEGER},
+      form_key = #{formKey,jdbcType=VARCHAR},
+      form_name = #{formName,jdbcType=VARCHAR},
+      app_key = #{appKey,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_upone_de_form
+    (gmt_create, gmt_modified, `status`, flags, form_json, form_version, form_key, form_name, 
+      app_key)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.gmtCreate,jdbcType=BIGINT}, #{item.gmtModified,jdbcType=BIGINT}, #{item.status,jdbcType=INTEGER}, 
+        #{item.flags,jdbcType=INTEGER}, #{item.formJson,jdbcType=LONGVARCHAR}, #{item.formVersion,jdbcType=INTEGER}, 
+        #{item.formKey,jdbcType=VARCHAR}, #{item.formName,jdbcType=VARCHAR}, #{item.appKey,jdbcType=VARCHAR}
+        )
+    </foreach>
+  </insert>
+
+    <!--auto generated by MybatisCodeHelper on 2024-02-26-->
+
+    <select id="page" parameterType="org.lg.upone.form.model.req.PageFormReq" resultMap="BaseResultMap">
+        select
+        *
+        from t_upone_de_form
+        <where>
+            <if test="formName != null and formName != ''">
+                and form_name like concat('%', #{formName,jdbcType=VARCHAR}, '%')
+            </if>
+          and app_key=#{appKey,jdbcType=VARCHAR}
+        </where>
+        order by gmt_create desc
+        limit #{startRow,jdbcType=BIGINT}, #{pageSize,jdbcType=BIGINT}
+    </select>
+
+    <select id="pageCount" parameterType="org.lg.upone.form.model.req.PageFormReq" resultType="java.lang.Integer">
+        select count(*)
+        from t_upone_de_form
+        <where>
+            <if test="formName != null and formName != ''">
+                and form_name like concat('%', #{formName,jdbcType=VARCHAR}, '%')
+            </if>
+          and app_key=#{appKey,jdbcType=VARCHAR}
+        </where>
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2024-02-26-->
+    <select id="selectFirstByFormKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_upone_de_form
+        where form_key=#{formKey,jdbcType=VARCHAR} limit 1
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2024-02-27-->
+    <delete id="deleteByFormKey">
+        delete from t_upone_de_form
+        where form_key=#{formKey,jdbcType=VARCHAR}
+    </delete>
+</mapper>

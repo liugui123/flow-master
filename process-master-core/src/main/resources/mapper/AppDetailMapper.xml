@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lg.engine.core.db.mapper.AppDetailMapper">
+  <resultMap id="BaseResultMap" type="org.lg.engine.core.db.model.AppDetail">
+    <!--@mbg.generated-->
+    <!--@Table t_wf_app_detail-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+    <result column="detail_key" jdbcType="VARCHAR" property="detailKey" />
+    <result column="detail_name" jdbcType="VARCHAR" property="detailName" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="app_id" jdbcType="BIGINT" property="appId" />
+    <result column="extra" jdbcType="VARCHAR" property="extra" />
+    <result column="sort_score" jdbcType="INTEGER" property="sortScore" />
+    <result column="icon_url" jdbcType="VARCHAR" property="iconUrl" />
+    <result column="app_detail_key" jdbcType="VARCHAR" property="appDetailKey" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modified, `status`, flags, detail_key, detail_name, pid, app_id, 
+    extra, sort_score, icon_url, app_detail_key
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_wf_app_detail
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_wf_app_detail
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.AppDetail" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_app_detail (gmt_create, gmt_modified, `status`, 
+      flags, detail_key, detail_name, 
+      pid, app_id, extra, sort_score, 
+      icon_url, app_detail_key)
+    values (#{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, 
+      #{flags,jdbcType=INTEGER}, #{detailKey,jdbcType=VARCHAR}, #{detailName,jdbcType=VARCHAR}, 
+      #{pid,jdbcType=BIGINT}, #{appId,jdbcType=BIGINT}, #{extra,jdbcType=VARCHAR}, #{sortScore,jdbcType=INTEGER}, 
+      #{iconUrl,jdbcType=VARCHAR}, #{appDetailKey,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.AppDetail" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_app_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="flags != null">
+        flags,
+      </if>
+      <if test="detailKey != null">
+        detail_key,
+      </if>
+      <if test="detailName != null">
+        detail_name,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="extra != null">
+        extra,
+      </if>
+      <if test="sortScore != null">
+        sort_score,
+      </if>
+      <if test="iconUrl != null">
+        icon_url,
+      </if>
+      <if test="appDetailKey != null">
+        app_detail_key,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="flags != null">
+        #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="detailKey != null">
+        #{detailKey,jdbcType=VARCHAR},
+      </if>
+      <if test="detailName != null">
+        #{detailName,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=BIGINT},
+      </if>
+      <if test="extra != null">
+        #{extra,jdbcType=VARCHAR},
+      </if>
+      <if test="sortScore != null">
+        #{sortScore,jdbcType=INTEGER},
+      </if>
+      <if test="iconUrl != null">
+        #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="appDetailKey != null">
+        #{appDetailKey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lg.engine.core.db.model.AppDetail">
+    <!--@mbg.generated-->
+    update t_wf_app_detail
+    <set>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="flags != null">
+        flags = #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="detailKey != null">
+        detail_key = #{detailKey,jdbcType=VARCHAR},
+      </if>
+      <if test="detailName != null">
+        detail_name = #{detailName,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=BIGINT},
+      </if>
+      <if test="extra != null">
+        extra = #{extra,jdbcType=VARCHAR},
+      </if>
+      <if test="sortScore != null">
+        sort_score = #{sortScore,jdbcType=INTEGER},
+      </if>
+      <if test="iconUrl != null">
+        icon_url = #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="appDetailKey != null">
+        app_detail_key = #{appDetailKey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lg.engine.core.db.model.AppDetail">
+    <!--@mbg.generated-->
+    update t_wf_app_detail
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      `status` = #{status,jdbcType=INTEGER},
+      flags = #{flags,jdbcType=INTEGER},
+      detail_key = #{detailKey,jdbcType=VARCHAR},
+      detail_name = #{detailName,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=BIGINT},
+      app_id = #{appId,jdbcType=BIGINT},
+      extra = #{extra,jdbcType=VARCHAR},
+      sort_score = #{sortScore,jdbcType=INTEGER},
+      icon_url = #{iconUrl,jdbcType=VARCHAR},
+      app_detail_key = #{appDetailKey,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_app_detail
+    (gmt_create, gmt_modified, `status`, flags, detail_key, detail_name, pid, app_id, 
+      extra, sort_score, icon_url, app_detail_key)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.gmtCreate,jdbcType=BIGINT}, #{item.gmtModified,jdbcType=BIGINT}, #{item.status,jdbcType=INTEGER}, 
+        #{item.flags,jdbcType=INTEGER}, #{item.detailKey,jdbcType=VARCHAR}, #{item.detailName,jdbcType=VARCHAR}, 
+        #{item.pid,jdbcType=BIGINT}, #{item.appId,jdbcType=BIGINT}, #{item.extra,jdbcType=VARCHAR}, 
+        #{item.sortScore,jdbcType=INTEGER}, #{item.iconUrl,jdbcType=VARCHAR}, #{item.appDetailKey,jdbcType=VARCHAR}
+        )
+    </foreach>
+  </insert>
+
+    <!--auto generated by MybatisCodeHelper on 2021-07-26-->
+    <select id="selectAllByPid" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_app_detail
+        where `pid` = #{pid,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-08-06-->
+    <update id="updateStatusById">
+        update t_wf_app_detail
+        set `status`=#{updatedStatus,jdbcType=INTEGER}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <!--auto generated by MybatisCodeHelper on 2021-08-07-->
+    <select id="selectByFlagsAndAppIdAndStatusAndDetailNameLike" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_app_detail
+        <where>
+            <if test="flags != null">
+                (
+                flags <![CDATA[&]]> #{flags,jdbcType=INTEGER} <![CDATA[<>]]> 0
+                or flags =4
+                )
+            </if>
+            <choose>
+                <when test="detailName != null and detailName != ''">
+                    and detail_name like concat('%', #{detailName,jdbcType=VARCHAR}, '%')
+                </when>
+                <otherwise>
+                    and app_id = #{appId,jdbcType=BIGINT}
+                </otherwise>
+            </choose>
+         <if test="status != null">
+         <![CDATA[ and ((status & #{status} = #{status} and flags&16 = 16) or flags&16 !=16 )  ]]>
+         </if>
+        </where>
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-08-07-->
+    <update id="updateFlagsByDetailKey">
+        update t_wf_app_detail
+        set flags=#{updatedFlags,jdbcType=INTEGER}
+        where detail_key=#{detailKey,jdbcType=VARCHAR}
+    </update>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-11-->
+    <update id="updateStatusByDetailKey">
+        update `t_wf_app_detail`
+        set `status`=#{updatedStatus,jdbcType=INTEGER}
+        where `detail_key`=#{detailKey,jdbcType=VARCHAR}
+    </update>
+
+    <!--auto generated by MybatisCodeHelper on 2021-09-02-->
+    <select id="selectFirstByDetailKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from `t_wf_app_detail`
+        where detail_key=#{detailKey,jdbcType=VARCHAR} limit 1
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-09-02-->
+    <select id="selectFirstByAppDetailKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from `t_wf_app_detail`
+        where app_detail_key=#{appDetailKey,jdbcType=VARCHAR} limit 1
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-09-02-->
+    <select id="selectFirstIdByDetailKey" resultType="java.lang.Long">
+        select id
+        from `t_wf_app_detail`
+        where detail_key=#{detailKey,jdbcType=VARCHAR} limit 1
+    </select>
+
+    <update id="updateDetailStatusById">
+        update `t_wf_app_detail`
+        set `status`=#{updateStatus,jdbcType=INTEGER}
+        where `id` = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectByAppId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_app_detail
+        where app_id = #{appId,jdbcType=BIGINT}
+
+    </select>
+
+    <select id="selectByAppIdAndPid" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_app_detail
+        where
+            pid = #{pid,jdbcType=BIGINT}
+        <if test="appId != null">
+            and app_id = #{appId,jdbcType=BIGINT}
+        </if>
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2022-04-14-->
+    <update id="updateIconUrlById">
+        update `t_wf_app_detail`
+        set icon_url=#{updatedIconUrl,jdbcType=VARCHAR}
+        where id=#{id,jdbcType=BIGINT}
+    </update>
+
+<!--auto generated by MybatisCodeHelper on 2022-09-05-->
+    <select id="selectByAppIdAndPidByDetailName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from `t_wf_app_detail`
+        where app_id=#{appId,jdbcType=BIGINT}
+        and (pid in(select id from t_wf_app_detail
+        where detail_name like concat('%',#{likeDetailName,jdbcType=VARCHAR},'%'))
+        or detail_name  like concat('%',#{likeDetailName,jdbcType=VARCHAR},'%'))
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2022-09-05-->
+    <select id="selectByAppIdAndDetailName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from `t_wf_app_detail`
+        where app_id=#{appId,jdbcType=BIGINT} and detail_name=#{detailName,jdbcType=VARCHAR}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2022-09-05-->
+    <select id="selectByAppIdAndDetailNameIn" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from `t_wf_app_detail`
+        where app_id=#{appId,jdbcType=BIGINT} and detail_name in
+        <foreach close=")" collection="detailNameCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2024-02-05-->
+    <update id="updateDetailNameByDetailKey">
+        update `t_wf_app_detail`
+        set detail_name=#{updatedDetailName,jdbcType=VARCHAR}
+        where detail_key=#{detailKey,jdbcType=VARCHAR}
+    </update>
+
+    <!--auto generated by MybatisCodeHelper on 2024-02-05-->
+    <select id="selectIdByAppDetailKey" resultType="java.lang.Long">
+        select id from `t_wf_app_detail`
+        where app_detail_key=#{appDetailKey,jdbcType=VARCHAR}
+        limit 1
+    </select>
+</mapper>

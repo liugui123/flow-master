@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lg.engine.core.db.mapper.RuActinstSiteMapper">
+  <resultMap id="BaseResultMap" type="org.lg.engine.core.db.model.RuActinstSite">
+    <!--@mbg.generated-->
+    <!--@Table t_wf_ru_actinst_site-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
+    <result column="pro_inst_id" jdbcType="BIGINT" property="proInstId" />
+    <result column="actinst_id" jdbcType="BIGINT" property="actinstId" />
+    <result column="target_id" jdbcType="BIGINT" property="targetId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modified, pro_inst_id, actinst_id, target_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_wf_ru_actinst_site
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_wf_ru_actinst_site
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.RuActinstSite" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_actinst_site (gmt_create, gmt_modified, pro_inst_id, 
+      actinst_id, target_id)
+    values (#{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}, #{proInstId,jdbcType=BIGINT}, 
+      #{actinstId,jdbcType=BIGINT}, #{targetId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.RuActinstSite" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_actinst_site
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="proInstId != null">
+        pro_inst_id,
+      </if>
+      <if test="actinstId != null">
+        actinst_id,
+      </if>
+      <if test="targetId != null">
+        target_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="proInstId != null">
+        #{proInstId,jdbcType=BIGINT},
+      </if>
+      <if test="actinstId != null">
+        #{actinstId,jdbcType=BIGINT},
+      </if>
+      <if test="targetId != null">
+        #{targetId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lg.engine.core.db.model.RuActinstSite">
+    <!--@mbg.generated-->
+    update t_wf_ru_actinst_site
+    <set>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="proInstId != null">
+        pro_inst_id = #{proInstId,jdbcType=BIGINT},
+      </if>
+      <if test="actinstId != null">
+        actinst_id = #{actinstId,jdbcType=BIGINT},
+      </if>
+      <if test="targetId != null">
+        target_id = #{targetId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lg.engine.core.db.model.RuActinstSite">
+    <!--@mbg.generated-->
+    update t_wf_ru_actinst_site
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      pro_inst_id = #{proInstId,jdbcType=BIGINT},
+      actinst_id = #{actinstId,jdbcType=BIGINT},
+      target_id = #{targetId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update t_wf_ru_actinst_site
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="gmt_create = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.gmtCreate,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="gmt_modified = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.gmtModified,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="pro_inst_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.proInstId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="actinst_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.actinstId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="target_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.targetId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update t_wf_ru_actinst_site
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="gmt_create = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.gmtCreate != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.gmtCreate,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="gmt_modified = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.gmtModified != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.gmtModified,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="pro_inst_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.proInstId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.proInstId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="actinst_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.actinstId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.actinstId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="target_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.targetId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.targetId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_ru_actinst_site
+    (id,gmt_create, gmt_modified, pro_inst_id, actinst_id, target_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT},#{item.gmtCreate,jdbcType=BIGINT}, #{item.gmtModified,jdbcType=BIGINT}, #{item.proInstId,jdbcType=BIGINT},
+        #{item.actinstId,jdbcType=BIGINT}, #{item.targetId,jdbcType=BIGINT})
+    </foreach>
+  </insert>
+    <!--auto generated by MybatisCodeHelper on 2021-05-12-->
+    <select id="selectByActinstId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst_site
+        where actinst_id = #{actinstId,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-05-20-->
+    <select id="selectFirstTargetIdByActinstId" resultType="java.lang.Long">
+        select target_id
+        from t_wf_ru_actinst_site
+        where actinst_id = #{actinstId,jdbcType=BIGINT} limit 1
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-05-21-->
+    <select id="selectTargetIdByActinstId" resultType="java.lang.Long">
+        select target_id
+        from t_wf_ru_actinst_site
+        where actinst_id = #{actinstId,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-05-21-->
+    <select id="selectActinstIdByTargetId" resultType="java.lang.Long">
+        select actinst_id
+        from t_wf_ru_actinst_site
+        where target_id = #{targetId,jdbcType=BIGINT}
+    </select>
+    <!--auto generated by MybatisCodeHelper on 2021-06-24-->
+    <select id="selectByProInstId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_ru_actinst_site
+        where pro_inst_id = #{proInstId,jdbcType=BIGINT}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-09-->
+    <select id="selectActinstIdByProInstId" resultType="java.lang.Long">
+        select actinst_id
+        from t_wf_ru_actinst_site
+        where pro_inst_id = #{proInstId,jdbcType=BIGINT}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-09-->
+    <select id="selectTargetIdByProInstId" resultType="java.lang.Long">
+        select target_id
+        from t_wf_ru_actinst_site
+        where pro_inst_id = #{proInstId,jdbcType=BIGINT}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-17-->
+    <select id="selectActinstIdByTargetIdIn" resultType="java.lang.Long">
+        select `actinst_id`
+        from t_wf_ru_actinst_site
+        where `target_id` in
+        <foreach close=")" collection="targetIdCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2022-09-02-->
+    <delete id="deleteByActinstIdIn">
+        delete from t_wf_ru_actinst_site
+        where actinst_id in
+        <foreach close=")" collection="actinstIdCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </delete>
+
+<!--auto generated by MybatisCodeHelper on 2022-09-02-->
+    <delete id="deleteByTargetIdIn">
+        delete from t_wf_ru_actinst_site
+        where target_id in
+        <foreach close=")" collection="targetIdCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=BIGINT}
+        </foreach>
+    </delete>
+
+
+    <select id="getInstProByProInstIdAndActInstIdAndTargetId" resultMap="BaseResultMap">
+        select  <include refid="Base_Column_List" />
+        from t_wf_ru_actinst_site
+        where target_id = #{targetId,jdbcType=BIGINT}
+            and actinst_id = #{actInstId,jdbcType=BIGINT}
+            and pro_inst_id = #{proInstId,jdbcType=BIGINT}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2024-04-30-->
+  <delete id="deleteByProInstId">
+        delete from t_wf_ru_actinst_site
+        where pro_inst_id=#{proInstId,jdbcType=BIGINT}
+    </delete>
+</mapper>

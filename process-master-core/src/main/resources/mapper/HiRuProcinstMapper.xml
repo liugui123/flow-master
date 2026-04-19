@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lg.engine.core.db.mapper.HiRuProcinstMapper">
+  <resultMap id="BaseResultMap" type="org.lg.engine.core.db.model.HiRuProcinst">
+    <!--@mbg.generated-->
+    <!--@Table t_wf_hi_ru_procinst-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
+    <result column="proc_name" jdbcType="VARCHAR" property="procName" />
+    <result column="proc_key" jdbcType="VARCHAR" property="procKey" />
+    <result column="proc_de_key" jdbcType="VARCHAR" property="procDeKey" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="var_json" jdbcType="LONGVARCHAR" property="varJson" />
+    <result column="proc_form_url_app" jdbcType="VARCHAR" property="procFormUrlApp" />
+    <result column="proc_form_start_url_app" jdbcType="VARCHAR" property="procFormStartUrlApp" />
+    <result column="task_title" jdbcType="LONGVARCHAR" property="taskTitle" />
+    <result column="task_type" jdbcType="LONGVARCHAR" property="taskType" />
+    <result column="starter_id" jdbcType="VARCHAR" property="starterId" />
+    <result column="starter_org_id" jdbcType="VARCHAR" property="starterOrgId" />
+    <result column="starter_name" jdbcType="VARCHAR" property="starterName" />
+    <result column="starter_org_name" jdbcType="VARCHAR" property="starterOrgName" />
+    <result column="starter_dept_id" jdbcType="VARCHAR" property="starterDeptId" />
+    <result column="starter_dept_name" jdbcType="VARCHAR" property="starterDeptName" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="proc_form_data_key" jdbcType="VARCHAR" property="procFormDataKey" />
+    <result column="proc_form_key" jdbcType="VARCHAR" property="procFormKey" />
+    <result column="proc_form_url" jdbcType="VARCHAR" property="procFormUrl" />
+    <result column="proc_re_id" jdbcType="VARCHAR" property="procReId" />
+    <result column="procinst_id" jdbcType="BIGINT" property="procinstId" />
+    <result column="app_key" jdbcType="VARCHAR" property="appKey" />
+    <result column="tenant" jdbcType="VARCHAR" property="tenant" />
+    <result column="biz_id" jdbcType="VARCHAR" property="bizId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modified, proc_name, proc_key, proc_de_key, `status`, var_json,
+    proc_form_url_app, proc_form_start_url_app, task_title, task_type, starter_id, starter_org_id,
+    starter_name, starter_org_name, starter_dept_id, starter_dept_name, flags, pid, proc_form_data_key,
+    proc_form_key, proc_form_url, proc_re_id, procinst_id, app_key, tenant, biz_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from t_wf_hi_ru_procinst
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_wf_hi_ru_procinst
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.HiRuProcinst" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_hi_ru_procinst (gmt_create, gmt_modified, proc_name,
+      proc_key, proc_de_key, `status`,
+      var_json, proc_form_url_app, proc_form_start_url_app,
+      task_title, task_type, starter_id,
+      starter_org_id, starter_name, starter_org_name,
+      starter_dept_id, starter_dept_name, flags,
+      pid, proc_form_data_key, proc_form_key,
+      proc_form_url, proc_re_id, procinst_id,
+      app_key, tenant, biz_id
+      )
+    values (#{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}, #{procName,jdbcType=VARCHAR},
+      #{procKey,jdbcType=VARCHAR}, #{procDeKey,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+      #{varJson,jdbcType=LONGVARCHAR}, #{procFormUrlApp,jdbcType=VARCHAR}, #{procFormStartUrlApp,jdbcType=VARCHAR},
+      #{taskTitle,jdbcType=LONGVARCHAR}, #{taskType,jdbcType=LONGVARCHAR}, #{starterId,jdbcType=VARCHAR},
+      #{starterOrgId,jdbcType=VARCHAR}, #{starterName,jdbcType=VARCHAR}, #{starterOrgName,jdbcType=VARCHAR},
+      #{starterDeptId,jdbcType=VARCHAR}, #{starterDeptName,jdbcType=VARCHAR}, #{flags,jdbcType=INTEGER},
+      #{pid,jdbcType=BIGINT}, #{procFormDataKey,jdbcType=VARCHAR}, #{procFormKey,jdbcType=VARCHAR},
+      #{procFormUrl,jdbcType=VARCHAR}, #{procReId,jdbcType=VARCHAR}, #{procinstId,jdbcType=BIGINT},
+      #{appKey,jdbcType=VARCHAR}, #{tenant,jdbcType=VARCHAR}, #{bizId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.lg.engine.core.db.model.HiRuProcinst">
+    <!--@mbg.generated-->
+    update t_wf_hi_ru_procinst
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      proc_name = #{procName,jdbcType=VARCHAR},
+      proc_key = #{procKey,jdbcType=VARCHAR},
+      proc_de_key = #{procDeKey,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      var_json = #{varJson,jdbcType=LONGVARCHAR},
+      proc_form_url_app = #{procFormUrlApp,jdbcType=VARCHAR},
+      proc_form_start_url_app = #{procFormStartUrlApp,jdbcType=VARCHAR},
+      task_title = #{taskTitle,jdbcType=LONGVARCHAR},
+      task_type = #{taskType,jdbcType=LONGVARCHAR},
+      starter_id = #{starterId,jdbcType=VARCHAR},
+      starter_org_id = #{starterOrgId,jdbcType=VARCHAR},
+      starter_name = #{starterName,jdbcType=VARCHAR},
+      starter_org_name = #{starterOrgName,jdbcType=VARCHAR},
+      starter_dept_id = #{starterDeptId,jdbcType=VARCHAR},
+      starter_dept_name = #{starterDeptName,jdbcType=VARCHAR},
+      flags = #{flags,jdbcType=INTEGER},
+      pid = #{pid,jdbcType=BIGINT},
+      proc_form_data_key = #{procFormDataKey,jdbcType=VARCHAR},
+      proc_form_key = #{procFormKey,jdbcType=VARCHAR},
+      proc_form_url = #{procFormUrl,jdbcType=VARCHAR},
+      proc_re_id = #{procReId,jdbcType=VARCHAR},
+      procinst_id = #{procinstId,jdbcType=BIGINT},
+      app_key = #{appKey,jdbcType=VARCHAR},
+      tenant = #{tenant,jdbcType=VARCHAR},
+      biz_id = #{bizId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update t_wf_hi_ru_procinst
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="gmt_create = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.gmtCreate,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="gmt_modified = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.gmtModified,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="proc_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="proc_key = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procKey,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="proc_de_key = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procDeKey,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="var_json = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.varJson,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="proc_form_url_app = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procFormUrlApp,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="proc_form_start_url_app = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procFormStartUrlApp,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="task_title = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.taskTitle,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="task_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.taskType,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="starter_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.starterId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="starter_org_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.starterOrgId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="starter_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.starterName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="starter_org_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.starterOrgName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="starter_dept_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.starterDeptId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="starter_dept_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.starterDeptName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="flags = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.flags,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="pid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.pid,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="proc_form_data_key = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procFormDataKey,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="proc_form_key = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procFormKey,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="proc_form_url = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procFormUrl,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="proc_re_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procReId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="procinst_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.procinstId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="app_key = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.appKey,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="tenant = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.tenant,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="biz_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.bizId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_hi_ru_procinst
+    (gmt_create, gmt_modified, proc_name, proc_key, proc_de_key, `status`, var_json,
+      proc_form_url_app, proc_form_start_url_app, task_title, task_type, starter_id,
+      starter_org_id, starter_name, starter_org_name, starter_dept_id, starter_dept_name,
+      flags, pid, proc_form_data_key, proc_form_key, proc_form_url, proc_re_id, procinst_id,
+      app_key, tenant, biz_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.gmtCreate,jdbcType=BIGINT}, #{item.gmtModified,jdbcType=BIGINT}, #{item.procName,jdbcType=VARCHAR},
+        #{item.procKey,jdbcType=VARCHAR}, #{item.procDeKey,jdbcType=VARCHAR}, #{item.status,jdbcType=INTEGER},
+        #{item.varJson,jdbcType=LONGVARCHAR}, #{item.procFormUrlApp,jdbcType=VARCHAR},
+        #{item.procFormStartUrlApp,jdbcType=VARCHAR}, #{item.taskTitle,jdbcType=LONGVARCHAR},
+        #{item.taskType,jdbcType=LONGVARCHAR}, #{item.starterId,jdbcType=VARCHAR}, #{item.starterOrgId,jdbcType=VARCHAR},
+        #{item.starterName,jdbcType=VARCHAR}, #{item.starterOrgName,jdbcType=VARCHAR},
+        #{item.starterDeptId,jdbcType=VARCHAR}, #{item.starterDeptName,jdbcType=VARCHAR},
+        #{item.flags,jdbcType=INTEGER}, #{item.pid,jdbcType=BIGINT}, #{item.procFormDataKey,jdbcType=VARCHAR},
+        #{item.procFormKey,jdbcType=VARCHAR}, #{item.procFormUrl,jdbcType=VARCHAR}, #{item.procReId,jdbcType=VARCHAR},
+        #{item.procinstId,jdbcType=BIGINT}, #{item.appKey,jdbcType=VARCHAR}, #{item.tenant,jdbcType=VARCHAR},
+        #{item.bizId,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+    <select id="selectByProcInstId" resultType="org.lg.engine.core.db.model.HiRuProcinst">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_hi_ru_procinst
+        where procinst_id = #{procinstId,jdbcType=BIGINT}
+    </select>
+
+    <select id="myStartedPage" resultMap="BaseResultMap">
+        select id,
+        gmt_create,
+        gmt_modified,
+        proc_name,
+        proc_key,
+        `status`,
+        flags,
+        starter_name
+        from t_wf_ru_procinst
+        <where>
+            starter_id = #{operator.id}
+            <if test="minGmtCreate != null and minGmtCreate != 0">
+                and gmt_create <![CDATA[>=]]> #{minGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="maxGmtCreate != null and maxGmtCreate != 0">
+                and gmt_create <![CDATA[<=]]> #{maxGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="procName != null and procName != ''">
+                and proc_name like concat('%', #{procName,jdbcType=BIGINT}, '%')
+            </if>
+        </where>
+        order by gmt_create desc
+        limit #{startRow,jdbcType=BIGINT}, #{pageSize,jdbcType=BIGINT}
+    </select>
+
+    <select id="myStartedPageCount" resultType="int">
+        select count(*)
+        from t_wf_ru_procinst
+        <where>
+            starter_id = #{operator.id}
+            <if test="minGmtCreate != null and minGmtCreate != 0">
+                and gmt_create <![CDATA[>=]]> #{minGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="maxGmtCreate != null and maxGmtCreate != 0">
+                and gmt_create <![CDATA[<=]]> #{maxGmtCreate,jdbcType=BIGINT}
+            </if>
+            <if test="procName != null and procName != ''">
+                and proc_name like concat('%', #{procName,jdbcType=BIGINT}, '%')
+            </if>
+        </where>
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-25-->
+    <select id="selectByStarterId" resultType="org.lg.engine.core.model.SortableProcinst">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_hi_ru_procinst
+        where starter_id=#{starterId,jdbcType=VARCHAR}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-11-04-->
+    <select id="selectProcinstIdByProcName" resultType="java.lang.Long">
+        select procinst_id
+        from t_wf_hi_ru_procinst
+        where proc_name=#{procName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectDeKeyByProcName" resultType="java.lang.String">
+        select proc_de_key
+        from t_wf_hi_ru_procinst
+        where proc_name=#{procName,jdbcType=VARCHAR}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2021-11-11-->
+  <select id="selectByProcinstIdIn" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_wf_hi_ru_procinst
+    where procinst_id in
+    <foreach close=")" collection="procinstIdCollection" index="index" item="item" open="(" separator=",">
+      #{item,jdbcType=BIGINT}
+    </foreach>
+  </select>
+
+  <select id="selectIdByBizIdAndProcFormDataKey"  resultType="java.lang.Long">
+    select procinst_id from t_wf_hi_ru_procinst
+    where biz_id = #{bizId,jdbcType=VARCHAR} and proc_form_data_key = #{procFormDataKey,jdbcType=VARCHAR}
+    limit 1
+  </select>
+
+
+  <select id="selectByProcKey" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_wf_hi_ru_procinst
+    where proc_key = #{procKey,jdbcType=VARCHAR} limit 1
+  </select>
+  <select id="selectProcinstByProcName" resultType="org.lg.engine.core.db.model.HiRuProcinst">
+    select
+    <include refid="Base_Column_List" />
+    from t_wf_hi_ru_procinst
+    where proc_name=#{procName,jdbcType=VARCHAR}
+  </select>
+</mapper>

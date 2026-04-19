@@ -1,0 +1,9 @@
+/.gradle/
+/.idea/
+*.class
+/build/
+/.idea
+.gradle
+.idea
+/target/
+/process-master-core-client/target/

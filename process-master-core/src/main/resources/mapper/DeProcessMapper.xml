@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lg.engine.core.db.mapper.DeProcessMapper">
+  <resultMap id="BaseResultMap" type="org.lg.engine.core.db.model.DeProcess">
+    <!--@mbg.generated-->
+    <!--@Table t_wf_de_process-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+    <result column="proc_json" jdbcType="LONGVARCHAR" property="procJson" />
+    <result column="proc_view_json" jdbcType="LONGVARCHAR" property="procViewJson" />
+    <result column="proc_version" jdbcType="INTEGER" property="procVersion" />
+    <result column="proc_key" jdbcType="VARCHAR" property="procKey" />
+    <result column="proc_name" jdbcType="VARCHAR" property="procName" />
+    <result column="business_type" jdbcType="INTEGER" property="businessType" />
+    <result column="config" jdbcType="LONGVARCHAR" property="config" />
+    <result column="form_model_re_id" jdbcType="BIGINT" property="formModelReId" />
+    <result column="app_key" jdbcType="VARCHAR" property="appKey" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modified, `status`, flags, proc_json, proc_view_json, proc_version, 
+    proc_key, proc_name, business_type, config, form_model_re_id, app_key
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_wf_de_process
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_wf_de_process
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.lg.engine.core.db.model.DeProcess" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_de_process (gmt_create, gmt_modified, `status`, 
+      flags, proc_json, proc_view_json, 
+      proc_version, proc_key, proc_name, 
+      business_type, config, form_model_re_id, 
+      app_key)
+    values (#{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, 
+      #{flags,jdbcType=INTEGER}, #{procJson,jdbcType=LONGVARCHAR}, #{procViewJson,jdbcType=LONGVARCHAR}, 
+      #{procVersion,jdbcType=INTEGER}, #{procKey,jdbcType=VARCHAR}, #{procName,jdbcType=VARCHAR}, 
+      #{businessType,jdbcType=INTEGER}, #{config,jdbcType=LONGVARCHAR}, #{formModelReId,jdbcType=BIGINT}, 
+      #{appKey,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.lg.engine.core.db.model.DeProcess">
+    <!--@mbg.generated-->
+    update t_wf_de_process
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      `status` = #{status,jdbcType=INTEGER},
+      flags = #{flags,jdbcType=INTEGER},
+      proc_json = #{procJson,jdbcType=LONGVARCHAR},
+      proc_view_json = #{procViewJson,jdbcType=LONGVARCHAR},
+      proc_version = #{procVersion,jdbcType=INTEGER},
+      proc_key = #{procKey,jdbcType=VARCHAR},
+      proc_name = #{procName,jdbcType=VARCHAR},
+      business_type = #{businessType,jdbcType=INTEGER},
+      config = #{config,jdbcType=LONGVARCHAR},
+      form_model_re_id = #{formModelReId,jdbcType=BIGINT},
+      app_key = #{appKey,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_wf_de_process
+    (gmt_create, gmt_modified, `status`, flags, proc_json, proc_view_json, proc_version, 
+      proc_key, proc_name, business_type, config, form_model_re_id, app_key)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.gmtCreate,jdbcType=BIGINT}, #{item.gmtModified,jdbcType=BIGINT}, #{item.status,jdbcType=INTEGER}, 
+        #{item.flags,jdbcType=INTEGER}, #{item.procJson,jdbcType=LONGVARCHAR}, #{item.procViewJson,jdbcType=LONGVARCHAR}, 
+        #{item.procVersion,jdbcType=INTEGER}, #{item.procKey,jdbcType=VARCHAR}, #{item.procName,jdbcType=VARCHAR}, 
+        #{item.businessType,jdbcType=INTEGER}, #{item.config,jdbcType=LONGVARCHAR}, #{item.formModelReId,jdbcType=BIGINT}, 
+        #{item.appKey,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+
+  <resultMap id="ProcinstNameResultMap" type="org.lg.engine.core.db.model.ProcinstName">
+    <result column="proc_key" jdbcType="VARCHAR" property="procKey" />
+    <result column="proc_name" jdbcType="VARCHAR" property="procName" />
+  </resultMap>
+    <update id="updateProcessStatus">
+        update t_wf_de_process
+        set gmt_modified = #{gmtModified,jdbcType=BIGINT},
+        `status` = #{status,jdbcType=INTEGER}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="getProcessDetail" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_de_process
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-07-13-->
+    <select id="selectByProcKeyInAndStatus" resultMap="BaseResultMap">
+        select
+        id, `status`,proc_key, proc_name, form_model_re_id
+        from t_wf_de_process
+        where proc_key in
+        <foreach close=")" collection="procKeyCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+        and `status`=#{status,jdbcType=INTEGER}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-07-25-->
+    <select id="selectFirstByProcKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_wf_de_process
+        where proc_key=#{procKey,jdbcType=VARCHAR} limit 1
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-07-29-->
+    <delete id="deleteByProcKey">
+        delete from t_wf_de_process
+        where `proc_key`=#{procKey,jdbcType=VARCHAR}
+    </delete>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-10-->
+    <select id="selectFirstProcFormKeyByProcKey" resultType="java.lang.String">
+        select `form_model_re_id`
+        from t_wf_de_process
+        where `proc_key`=#{procKey,jdbcType=VARCHAR}
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-08-10-->
+    <select id="selectProcFormKeyByProcKeyIn" resultType="java.lang.String">
+        select `form_model_re_id`
+        from t_wf_de_process
+        where `proc_key` in
+        <foreach close=")" collection="procKeyCollection" index="index" item="item" open="(" separator=",">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </select>
+
+    <update id="updateBusinessTypeById">
+        update t_wf_de_process
+        set business_type = #{businessType}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="businessTypeList" resultMap="BaseResultMap">
+        select proc_key, business_type
+        from t_wf_de_process
+        where proc_key in
+        <foreach close=")" collection="procKeys" item="item" open="(" separator=",">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </select>
+
+  <update id="updateProcFormKey">
+    update t_wf_de_process
+    set form_model_re_id = #{procFormKey}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="filterUserProcinstNames" resultMap="ProcinstNameResultMap">
+    select proc_key, proc_name
+    from t_wf_de_process
+    where (proc_key not in (select distinct(proc_key) from t_wf_de_process_auth)
+    <if test="procKeys != null and procKeys.size() &gt; 0">
+      or proc_key in
+      <foreach close=")" collection="procKeys" item="item" open="(" separator=",">
+        #{item,jdbcType=VARCHAR}
+      </foreach>
+    </if>
+    )
+    <if test="keyword != null and keyword != ''">
+    and proc_name like CONCAT('%',#{keyword},'%')
+    </if>
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2022-09-06-->
+  <select id="selectProcKeyByProcFormKey" resultType="java.lang.String">
+        select proc_key
+        from t_wf_de_process
+        where form_model_re_id=#{procFormKey,jdbcType=VARCHAR}
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2022-10-28-->
+  <select id="selectProcKeyByProcName" resultType="java.lang.String">
+        select proc_key
+        from t_wf_de_process
+        where proc_name=#{procName,jdbcType=VARCHAR}
+    </select>
+</mapper>

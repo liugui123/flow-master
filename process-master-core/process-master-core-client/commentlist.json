@@ -1,0 +1,58 @@
+{
+  "code": 200,
+  "success": true,
+  "data": [{
+    "actInstType":"StartEvent",
+    "assignees": [
+      {
+        "id":"1",
+        "name":"张三",
+        "deptId":"1",
+        "deptName":"财务部",
+        "orgId":"1",
+        "orgName":"讯盟科技",
+        "postId":"1",
+        "postName":"测试"
+      }
+    ],
+    "flags_1抄送, 2会签 , 4或签,  8个签,  16前加签, 32后加签":"1",
+    "taskDesc_任务描述 动作描述：发起 通过  拒绝  待处理  退回  终止流程 加签  转交 撤回 自动同意":"通过",
+
+    "userTaskComments": [
+      {
+        "assignee":
+          {
+            "id":"1",
+            "name":"张三",
+            "deptId":"1",
+            "deptName":"财务部",
+            "orgId":"1",
+            "orgName":"讯盟科技",
+            "postId":"1",
+            "postName":"测试"
+          },
+        "taskDesc_任务描述 动作描述：发起 通过  拒绝  待处理  退回  终止流程 加签  转交 撤回 自动同意":"通过",
+        "comment": "我同意了",
+        "gmtCreate" :""
+      },
+      {
+        "assignee":
+        {
+          "id":"2",
+          "name":"李四",
+          "deptId":"1",
+          "deptName":"财务部",
+          "orgId":"1",
+          "orgName":"讯盟科技",
+          "postId":"1",
+          "postName":"测试"
+        },
+        "taskDesc_任务描述 动作描述：发起 通过  拒绝  待处理  退回  终止流程 加签  转交 撤回 自动同意":"通过",
+        "comment": "我也同意了",
+        "gmtCreate" :""
+      }
+    ]
+
+  }
+]
+}
